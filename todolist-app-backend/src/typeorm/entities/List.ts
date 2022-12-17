@@ -26,7 +26,7 @@ export class List {
     id_user: User[];
 
     @Column({
-        type: "date",
+        type: "datetime",
         nullable: true
     })
     archivated_at: Date;

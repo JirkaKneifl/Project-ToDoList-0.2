@@ -6,6 +6,7 @@ import {TypeOrmModule} from "@nestjs/typeorm";
 import {User} from "./typeorm/entities/User";
 import {List} from "./typeorm/entities/List";
 import {Todo} from "./typeorm/entities/Todo";
+import { UsersModule } from './users/users.module';
 
 @Module({
     imports: [
@@ -21,7 +22,8 @@ import {Todo} from "./typeorm/entities/Todo";
         }),
         LoginModule,
         RegisterModule,
-        MainModule
+        MainModule,
+        UsersModule
     ],
     controllers: [],
     providers: [],
