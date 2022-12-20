@@ -7,11 +7,6 @@ import Main from "./pages/Main/Main"
 import Logout from "./pages/Logout";
 
 function App() {
-
- /* const handleClick = () => {
-    console.log("nothing happen just click")
-  }*/
-
   return(
     <Routes>
         <Route path="/" element={<About />}/>
