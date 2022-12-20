@@ -7,6 +7,8 @@ import {User} from "./typeorm/entities/User";
 import {List} from "./typeorm/entities/List";
 import {Todo} from "./typeorm/entities/Todo";
 import { UsersModule } from './users/users.module';
+import { ListsModule } from './lists/lists.module';
+import { TodosModule } from './todos/todos.module';
 
 @Module({
     imports: [
@@ -23,7 +25,9 @@ import { UsersModule } from './users/users.module';
         LoginModule,
         RegisterModule,
         MainModule,
-        UsersModule
+        UsersModule,
+        ListsModule,
+        TodosModule
     ],
     controllers: [],
     providers: [],

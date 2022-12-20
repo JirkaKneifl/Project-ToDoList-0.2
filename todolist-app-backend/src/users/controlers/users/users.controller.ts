@@ -5,7 +5,7 @@ import {UpdateUserDto} from "../../dtos/UpdateUser.dto";
 
 @Controller('users')
 export class UsersController {
-
+/*
     constructor(private userService: UsersService){
 
     }
@@ -14,11 +14,6 @@ export class UsersController {
     async GetUser(){
         const users = await this.userService.FindAllUsers();
         return users;
-    }
-
-    @Post()
-    CreateUser(@Body() createUserDto: CreateUserDto){
-        this.userService.CreateUser(createUserDto);
     }
 
     @Put(':id_user')
@@ -34,5 +29,5 @@ export class UsersController {
         @Param('id_user', ParseIntPipe) id_user: number
     ){
         await this.userService.DeleteUser(id_user);
-    }
+    }*/
 }

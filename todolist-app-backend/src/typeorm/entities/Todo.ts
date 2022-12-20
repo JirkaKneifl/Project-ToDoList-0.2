@@ -16,16 +16,17 @@ export class Todo {
     title: string;
 
     @Column({
-        type: "datetime"
+        type: "datetime",
+        nullable: true
     })
     dedline_at: Date;
 
     @Column({
         type: "datetime"
     })
-    created_at: Date;
+    created_at: Date = new Date();
 
-    @OneToMany(type => List, list => list.id_list)
+    @OneToMany(() => List, (list) => list.id_list)
     id_list: List[];
 
     @Column({
