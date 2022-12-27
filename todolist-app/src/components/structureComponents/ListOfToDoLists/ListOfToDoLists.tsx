@@ -13,7 +13,7 @@ function ListOfLists(){
         isError,
         error
     } = useQuery('listTodos',() =>
-        fetch('http://localhost:3000/main').then((res) => res.json())
+        fetch('http://localhost:3001/main').then((res) => res.json())
     );
 
     if (isLoading) return <p>Loading</p>;
@@ -23,9 +23,11 @@ function ListOfLists(){
         <>
             <div className={"listOfToDoListsPanel"}>
                 <VStack alignItems={"stretch"} justifyContent={"flex-start"} gap={1}>
-                    {todos?.map((todo: any) =>(
-                    <h3 className={"sidebarItem"}>{todo.title}</h3>
-                    ))}
+                    {todos?.map((todo: any) => {
+                        console.log(todo)
+                        return <Link key={todo.id_todo} to={`/main/${todo.id_todo}`}
+                              className={"sidebarItem"}>{todo.title}</Link>
+                    })}
                     <HrSeparator width={"80%"}></HrSeparator>
                     <Link to={""} className={"addButton"}><IoIosAddCircleOutline className={"addButtonIcon"}></IoIosAddCircleOutline>Add</Link>
                 </VStack>

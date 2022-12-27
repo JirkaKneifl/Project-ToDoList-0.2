@@ -1,41 +1,31 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import Button from "../../basicComponents/Button/Button";
 import VStack from "../../basicComponents/VStack";
 import Text from "../../basicComponents/Text/Text";
 import HStack from "../../basicComponents/HStack";
 import "./RegisterForm.css"
-import {useMutation, useQuery} from "react-query";
+import {useMutation} from "react-query";
 import {FormEvent, useState} from "react";
 
 function RegisterForm(){
-    const [first_name, setFirstName] = useState('');
-    const [last_name, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
 
-    /*useQuery('register', () =>
-        fetch('http://localhost:3000/register').then((res) => res.json()), {
-            onSuccess: (data: any) => {
-                setFirstName(data.first_name);
-                setLastName(data.last_name);
-                setEmail(data.email);
-                setPassword(data.password);
-                setConfirmPassword(data.confirm_password);
-            }
-        }
-    );*/
+    const [first_name, setFirstName] = useState('a');
+    const [last_name, setLastName] = useState('a');
+    const [email, setEmail] = useState('a@a');
+    const [phone, setPhone] = useState('123456789');
+    const [password, setPassword] = useState('a');
+    const [confirmPassword, setConfirmPassword] = useState('a');
 
     const createUserMutation = useMutation('createUser', () =>
-        fetch('http://localhost:3000/register/', {
-                method: 'POST',
-                headers: {
-                    contentType: 'application/json',
-                },
-                body: JSON.stringify({first_name, last_name, email, password, confirmPassword})
-            }
-        ));
+        fetch('http://localhost:3001/register', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({first_name, last_name, email, phone, password, confirmPassword})
+        }).then(() => {
+            console.log("createmutation probehl az sem")
+        }),
+
+    );
 
     const handleRegisterSubmit = (e: FormEvent) => {
         e.preventDefault();
@@ -46,41 +36,60 @@ function RegisterForm(){
             <div className={"registerForm"}>
                 <form onSubmit={handleRegisterSubmit}>
                     <VStack gap={1}>
-                        <Text type={"title"} children={"Login"}></Text>
+                        <Text type={"title"} children={"Register"}></Text>
                         <VStack gap={1} justifyContent={"flex-start"}>
-                            <Text type={"body"}>First name: </Text>
+                            <Text type={"body"}>First name:</Text>
                             <input
                                 type={"text"}
                                 name={first_name}
                                 value={first_name}
+                                onChange={(e) => setFirstName(e.target.value)}
+                                required
                             />
+                            <p>{first_name}</p>
                             <Text type={"body"}>Last name: </Text>
                             <input
                                 type={"text"}
                                 name={last_name}
                                 value={last_name}
+                                onChange={(e) => setLastName(e.target.value)}
+                                required
                             />
                             <Text type={"body"}>Email: </Text>
                             <input
                                 type={"email"}
                                 name={email}
                                 value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                            <Text type={"body"}>Phone: </Text>
+                            <input
+                                type={"tel"}
+                                name={phone}
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
+                                required
                             />
                             <Text type={"body"}>Password: </Text>
                             <input
                                 type={"password"}
                                 name={password}
                                 value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
                             />
                             <Text type={"body"}>Confirm password: </Text>
                             <input
                                 type={"password"}
                                 name={confirmPassword}
                                 value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                required
                             />
                         </VStack>
                         <VStack gap={1} justifyContent={"flex-start"} alignItems={"center"}>
-                            <Button onClick={handleRegisterSubmit} label={"Register"}></Button>
+                            <button type={"submit"}>Register</button>
                         </VStack>
                         <HStack gap={1} alignItems={"baseline"}>
                             <Text type={"small-body"} children={"Are you already registered?"}></Text><Link to={"/login"}>Login</Link>

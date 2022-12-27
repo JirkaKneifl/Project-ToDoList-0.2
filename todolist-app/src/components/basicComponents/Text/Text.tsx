@@ -2,7 +2,7 @@ import "./Text.css";
 
 type TextProps = {
     type: "title" | "body" | "small-body" | "meta";
-    children: string;
+    children: any;
 }
 
 const typeToElement: Record<TextProps["type"], string> = {
