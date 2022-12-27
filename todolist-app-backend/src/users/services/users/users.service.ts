@@ -17,9 +17,10 @@ export class UsersService {
         return this.userRepository.find();
     }
 
-    CreateUser(creteUserDetails: CreateUserParams){
-        const password = EncodePassword(creteUserDetails.password);
-        const newUser = this.userRepository.create({ ...creteUserDetails, password});
+    CreateUser(createUserDto){
+        const password = EncodePassword(createUserDto.password);
+        const newUser = this.userRepository.create({ ...createUserDto, password});
+        console.log("user service")
         return this.userRepository.save(newUser);
     }
 

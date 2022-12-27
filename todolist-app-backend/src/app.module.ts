@@ -20,7 +20,7 @@ import { TodosModule } from './todos/todos.module';
             password: '',
             database: 'todo-list-app',
             entities: [User, List, Todo],
-            synchronize: true
+            synchronize: false
         }),
         LoginModule,
         RegisterModule,
