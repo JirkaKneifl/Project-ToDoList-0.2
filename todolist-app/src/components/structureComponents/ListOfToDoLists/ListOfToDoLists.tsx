@@ -8,11 +8,11 @@ import {useQuery} from "react-query";
 function ListOfLists(){
 
     const {
-        data: todos,
+        data: lists,
         isLoading,
         isError,
         error
-    } = useQuery('listTodos',() =>
+    } = useQuery('listLists',() =>
         fetch('http://localhost:3001/main').then((res) => res.json())
     );
 
@@ -23,13 +23,19 @@ function ListOfLists(){
         <>
             <div className={"listOfToDoListsPanel"}>
                 <VStack alignItems={"stretch"} justifyContent={"flex-start"} gap={1}>
-                    {todos?.map((todo: any) => {
-                        console.log(todo)
-                        return <Link key={todo.id_todo} to={`/main/${todo.id_todo}`}
-                              className={"sidebarItem"}>{todo.title}</Link>
+                    {lists?.map((list: any) => {
+                        console.log("jsme v listoftodos", list)
+                        const id_list: number = list.id_list;
+                        return <Link
+                            key={list.id_list}
+                            to={`/main/${id_list}`}
+                            className={"sidebarItem"}
+                        >
+                            {list.title}
+                        </Link>
                     })}
                     <HrSeparator width={"80%"}></HrSeparator>
-                    <Link to={""} className={"addButton"}><IoIosAddCircleOutline className={"addButtonIcon"}></IoIosAddCircleOutline>Add</Link>
+                    <Link to={"/main/addList"} className={"addButton"}><IoIosAddCircleOutline className={"addButtonIcon"}></IoIosAddCircleOutline>Add</Link>
                 </VStack>
             </div>
         </>

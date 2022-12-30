@@ -12,6 +12,17 @@ export class ListsService {
     constructor(@InjectRepository(List)private listRepository: Repository<List>) {
     }
 
+    listLists(){
+        return this.listRepository.find();
+    }
+
+    findListById(id_list: number){
+        console.log("service");
+        return this.listRepository.findOne({
+            where: { id_list }
+        });
+    }
+
     CreateList(createListDetails: CreateListParams){
         const newList = this.listRepository.create({ ...createListDetails})
         return this.listRepository.save(newList);

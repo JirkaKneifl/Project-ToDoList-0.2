@@ -11,6 +11,8 @@ import ListOfToDoLists from "../../components/structureComponents/ListOfToDoList
 import HStack from "../../components/basicComponents/HStack";
 import "./Main.css"
 import {useQuery} from "react-query";
+import DescriptionBodyOfTodoLists
+    from "../../components/structureComponents/DescriptionBodyOfTodoLists/DescriptionBodyOfTodoLists";
 
 function Main(){
 
@@ -21,11 +23,10 @@ function Main(){
             <VStack gap={4}>
                 <NavBar></NavBar>
                 <div className={"mainContent"}>
-                    <HStack alignItems={"flex-start"} gap={4}>
+                    <HStack alignItems={"flex-start"} gap={32}>
                         <ListOfToDoLists></ListOfToDoLists>
-                        <VStack alignItems={"center"} justifyContent={"center"} gap={1}>
-                            <h1>Work</h1>
-                            <p>Something about work...</p>
+                        <VStack alignItems={"flex-start"} justifyContent={"center"} gap={1}>
+                            <DescriptionBodyOfTodoLists></DescriptionBodyOfTodoLists>
                         </VStack>
                     </HStack>
                 </div>

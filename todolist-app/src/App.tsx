@@ -6,6 +6,8 @@ import Register from "./pages/Register/Register";
 import Main from "./pages/Main/Main"
 import Logout from "./pages/Logout";
 import {QueryClient , QueryClientProvider} from "react-query";
+import DescriptionBodyOfTodoLists
+    from "./components/structureComponents/DescriptionBodyOfTodoLists/DescriptionBodyOfTodoLists";
 
 function App() {
     const queryClient = new QueryClient();
@@ -17,7 +19,9 @@ function App() {
             <Route path={"/login"} element={<Login />}/>
             <Route path={"/logout"} element={<Logout />}/>
             <Route path={"/register"} element={<Register />}/>
-            <Route path={"/main"} element={<Main />} />
+            <Route path={"/main"} element={<Main />}>
+                <Route path={"/main/:idList"} element={<DescriptionBodyOfTodoLists/>}></Route>
+            </Route>
         </Routes>
       </QueryClientProvider>
 )

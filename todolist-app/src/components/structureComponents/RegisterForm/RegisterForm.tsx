@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import {Link, redirect} from "react-router-dom";
 import VStack from "../../basicComponents/VStack";
 import Text from "../../basicComponents/Text/Text";
 import HStack from "../../basicComponents/HStack";
@@ -24,7 +24,6 @@ function RegisterForm(){
         }).then(() => {
             console.log("createmutation probehl az sem")
         }),
-
     );
 
     const handleRegisterSubmit = (e: FormEvent) => {
@@ -46,7 +45,6 @@ function RegisterForm(){
                                 onChange={(e) => setFirstName(e.target.value)}
                                 required
                             />
-                            <p>{first_name}</p>
                             <Text type={"body"}>Last name: </Text>
                             <input
                                 type={"text"}
