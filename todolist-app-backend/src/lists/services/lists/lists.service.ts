@@ -17,18 +17,19 @@ export class ListsService {
     }
 
     findListById(id_list: number){
-        console.log("service");
+        //console.log("service");
         return this.listRepository.findOne({
             where: { id_list }
         });
     }
 
-    CreateList(createListDetails: CreateListParams){
-        const newList = this.listRepository.create({ ...createListDetails})
+
+    createList(createListDto){
+        const newList = this.listRepository.create({ ...createListDto})
         return this.listRepository.save(newList);
     }
 
-    UpdateList(id_list: number, updateListDetails: UpdateListParams){
+    updateList(id_list: number, updateListDetails: UpdateListParams){
         this.listRepository.update({id_list}, {...updateListDetails});
     }
 

@@ -3,9 +3,13 @@ import HStack from "../../basicComponents/HStack";
 import {Link, useParams} from "react-router-dom";
 import {useQuery} from "react-query";
 import {useState} from "react";
+import VStack from "../../basicComponents/VStack";
+
+
 
 
 function DescriptionBodyOfTodoLists(){
+
     const { idList } = useParams();
     const [title, setTitle] = useState();
     const [description, setDescription] = useState();
@@ -25,17 +29,18 @@ function DescriptionBodyOfTodoLists(){
             }
         }
     );
-
     if (isLoading) return <p>Loading</p>;
     if (isError) return <p>Error: {error as string}</p>;
 
     return(
         <>
-            <HStack gap={16} alignItems={"center"}>
-                <Text type={"title"} children={title}></Text>
-                <Link to={""}>Update</Link>
-            </HStack>
-                <Text type={"body"} children={description}></Text>
+                <VStack gap={1}>
+                    <HStack gap={16} alignItems={"center"}>
+                        <Text type={"title"} children={title}></Text>
+                        <Link to={`/main/${idList}/listUpdate`}>Update</Link>
+                    </HStack>
+                        <Text type={"body"} children={description}></Text>
+                </VStack>
         </>
     )
 }

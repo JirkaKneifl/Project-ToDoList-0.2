@@ -1,4 +1,4 @@
-import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {List} from "./List";
 
 
@@ -26,12 +26,13 @@ export class Todo {
     })
     created_at: Date = new Date();
 
-    @OneToMany(() => List, (list) => list.id_list)
-    id_list: List[];
-
     @Column({
         type: "tinyint",
         width: 1
     })
     is_done;
+
+    @ManyToOne(() => List, (list) => list.todos)
+    @JoinColumn({name: "id_list"})
+    list: List;
 }

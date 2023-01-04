@@ -5,19 +5,18 @@ type TextProps = {
     children: any;
 }
 
-const typeToElement: Record<TextProps["type"], string> = {
+const typeToElement = {
     "title"      : "h1",
     "body"       : "h4",
     "small-body" : "p",
     "meta"       : "em",
-}
+} as const
 
 const typeClassName: Record<TextProps["type"], string> = {
     "title"      : "text text-title",
     "body"       : "text text-body",
     "small-body" : "text text-small-body",
     "meta"       : "text text-meta",
-
 }
 
 

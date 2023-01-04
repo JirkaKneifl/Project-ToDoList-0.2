@@ -35,7 +35,7 @@ function ListOfLists(){
                         </Link>
                     })}
                     <HrSeparator width={"80%"}></HrSeparator>
-                    <Link to={"/main/addList"} className={"addButton"}><IoIosAddCircleOutline className={"addButtonIcon"}></IoIosAddCircleOutline>Add</Link>
+                    <Link to={"/main/createList"} className={"addButton"}><IoIosAddCircleOutline className={"addButtonIcon"}></IoIosAddCircleOutline>Add</Link>
                 </VStack>
             </div>
         </>

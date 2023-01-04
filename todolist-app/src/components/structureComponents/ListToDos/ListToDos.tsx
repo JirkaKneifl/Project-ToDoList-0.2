@@ -1,16 +1,20 @@
-import ToDo from "../ToDo/ToDo";
+import HStack from "../../basicComponents/HStack";
+import Text from "../../basicComponents/Text/Text";
+import {Link} from "react-router-dom";
+
 
 function ListToDos() {
-    const listOfToDos = [];
-
 
 
     return (
         <>
-
-            <ToDo toDoLabel={"udele mycku"}></ToDo>
-            <ToDo toDoLabel={"udele mycku"}></ToDo>
-            <ToDo toDoLabel={"udele mycku"}></ToDo>
+            <HStack gap={1}>
+                <input type={"checkbox"}/>
+                <Text type={"small-body"}>
+                    children
+                </Text>
+                <Link to={`/deleteToDo/:idtodo`}></Link>
+            </HStack>
         </>
     )
 }

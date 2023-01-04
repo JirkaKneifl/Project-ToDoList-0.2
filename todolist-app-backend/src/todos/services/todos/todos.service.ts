@@ -11,8 +11,14 @@ export class TodosService {
     constructor(@InjectRepository(Todo) private todoRepository: Repository<Todo>) {
     }
 
-    listTodos(){
+    findeAllTodos(){
         return this.todoRepository.find();
+    }
+
+    findeTodosByList(id_todo: number){
+        return this.todoRepository.find({
+            where: {id_todo}
+        })
     }
 
     CreateTodo(createTodoDetails: CreateTodoParams){
