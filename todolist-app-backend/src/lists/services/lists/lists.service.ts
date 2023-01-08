@@ -4,6 +4,7 @@ import {InjectRepository} from "@nestjs/typeorm";
 import {Repository} from "typeorm";
 import {CreateListParams} from "../../types/CreateListParams.type";
 import {UpdateListParams} from "../../types/UpdateListParams.type";
+import {Todo} from "../../../typeorm/entities/Todo";
 
 
 @Injectable()
@@ -22,6 +23,7 @@ export class ListsService {
             where: { id_list }
         });
     }
+
 
 
     createList(createListDto){

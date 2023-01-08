@@ -10,27 +10,27 @@ export class List {
         type: "int",
     })
     id_list: number;
+
     @Column({
         type: "varchar",
         length: 100
     })
     title: string;
+
     @Column({
         type: "varchar",
         length: 256,
         nullable: true
     })
     description: string;
-    @Column({
-        type: "int"
-    })
-    id_user: number;
+
     @Column({
         type: "datetime",
         nullable: true
     })
     archivated_at: Date;
-    @ManyToOne(() => User, (user) => user.lists, {onDelete: "CASCADE", onUpdate: "CASCADE"})
+
+    @ManyToOne(() => User, (user) => user.lists)
     @JoinColumn({name: "id_user"})
     user: User;
 

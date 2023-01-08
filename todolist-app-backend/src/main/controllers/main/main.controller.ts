@@ -25,9 +25,6 @@ export class MainController {
 
     @Get('/:idList')
     async findListById(@Param('idList') idList: string){
-        if(idList === undefined)
-            return await this.listService.findListById(undefined);
-        //console.log("controller");
 
         return await this.listService.findListById(Number(idList));
     }
