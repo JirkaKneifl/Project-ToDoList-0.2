@@ -4,7 +4,7 @@ import {Link, useParams} from "react-router-dom";
 import * as React from "react";
 import {FormEvent, useState} from "react";
 import {useMutation, useQuery} from "react-query";
-
+import "./UpdateListForm.css"
 
 function UpdateListForm(){
     const { idList } = useParams();
@@ -51,6 +51,7 @@ function UpdateListForm(){
                 <VStack gap={1}>
                     <Text type={"body"} children={"Title"}></Text>
                     <input
+                        className={"titleInput"}
                         type={"text"}
                         name={title}
                         value={title}
@@ -58,6 +59,7 @@ function UpdateListForm(){
                     />
                     <Text type={"body"} children={"Description"}></Text>
                     <textarea
+                        className={"descriptionTextarea"}
                         name={description}
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
@@ -65,7 +67,7 @@ function UpdateListForm(){
                         cols={20}
                     ></textarea>
 
-                    <button type={"submit"} children={"Update"}></button>
+                    <button className={"updateButton"} type={"submit"} children={"Update"}></button>
                 </VStack>
             </form>
         </>
