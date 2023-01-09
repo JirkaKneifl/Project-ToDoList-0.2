@@ -36,15 +36,14 @@ export class MainController {
     }
 
 
-
     @Get('/:idList/listUpdate')
     GetListData(@Param('idList') idList: string){
         return this.listService.findListById(Number(idList));
     }
 
     @Put('/:idList/listUpdate')
-    UpdateList(@Param('idList') idList: string, @Body() updateListDto: UpdateListDto){
-        return this.listService.updateList(Number(idList), updateListDto);
+    async UpdateList(@Param('idList') idList: string, @Body() updateListDto: UpdateListDto){
+        return await this.listService.updateList(Number(idList), updateListDto);
 
     }
 }

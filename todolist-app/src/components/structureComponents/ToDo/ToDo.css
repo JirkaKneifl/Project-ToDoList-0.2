@@ -1,0 +1,8 @@
+.todoBody{
+    border: 2px solid #c2c2c2;
+    border-radius: 4px;
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin: 4px;
+}

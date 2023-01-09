@@ -1,13 +1,12 @@
 import VStack from "../../basicComponents/VStack";
 import Text from "../../basicComponents/Text/Text";
-import {Link, useParams} from "react-router-dom";
 import * as React from "react";
-import {FormEvent, useState} from "react";
-import {useMutation, useQuery} from "react-query";
+import {useState} from "react";
+import {useMutation} from "react-query";
+
 
 
 function CreateListForm(){
-    const { idList } = useParams();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
 
@@ -23,11 +22,9 @@ function CreateListForm(){
         }).catch()
     )
 
-    const handleCreateSubmit = (e: FormEvent) => {
-        e.preventDefault();
+    const handleCreateSubmit = () => {
         createListMutation.mutate();
     }
-
 
     return(
         <>
@@ -48,10 +45,7 @@ function CreateListForm(){
                         onChange={(e) => setDescription(e.target.value)}
                         rows={5}
                         cols={20}
-                    ></textarea>
-
-
-
+                    />
                     <button type={"submit"} children={"Add List"}></button>
                 </VStack>
             </form>

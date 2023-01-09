@@ -1,8 +1,8 @@
 import VStack from "../../basicComponents/VStack";
 import Text from "../../basicComponents/Text/Text";
-import {Link, useParams} from "react-router-dom";
+import { useParams} from "react-router-dom";
 import * as React from "react";
-import {FormEvent, useState} from "react";
+import { useState} from "react";
 import {useMutation, useQuery} from "react-query";
 import "./UpdateListForm.css"
 
@@ -12,7 +12,6 @@ function UpdateListForm(){
     const [description, setDescription] = useState('');
 
     const {
-        data,
         isLoading,
         isError,
         error
@@ -36,8 +35,7 @@ function UpdateListForm(){
         }).catch()
     )
 
-    const handleUpdateSubmit = (e: FormEvent) => {
-        e.preventDefault();
+    const handleUpdateSubmit = () => {
         updateListMutation.mutate();
     }
 

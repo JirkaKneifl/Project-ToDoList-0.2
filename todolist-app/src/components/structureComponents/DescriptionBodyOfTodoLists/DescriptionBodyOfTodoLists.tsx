@@ -4,9 +4,7 @@ import {Link, useParams} from "react-router-dom";
 import {useQuery} from "react-query";
 import {useState} from "react";
 import VStack from "../../basicComponents/VStack";
-
-
-
+import ToDo from "../ToDo/ToDo";
 
 function DescriptionBodyOfTodoLists(){
 
@@ -40,6 +38,13 @@ function DescriptionBodyOfTodoLists(){
                         <Link to={`/main/${idList}/listUpdate`}>Update</Link>
                     </HStack>
                         <Text type={"body"} children={description}></Text>
+                    {
+                          list.todos.length ?
+                              list.todos.map((todo: any) => {
+                                return (<ToDo key={todo.id_todo} toDoLabel={todo.title}></ToDo>);
+                              })
+                              : <Text type={"small-body"}>Nema zadne Todos</Text>
+                    }
                 </VStack>
         </>
     )
