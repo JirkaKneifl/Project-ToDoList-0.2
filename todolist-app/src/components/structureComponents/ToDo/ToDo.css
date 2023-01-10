@@ -6,3 +6,9 @@
     padding-right: 8px;
     margin: 4px;
 }
+.editTodoIcon:hover{
+    color: #67AB47;
+}
+.deleteTodoIcon:hover{
+    color: firebrick;
+}

@@ -5,6 +5,8 @@ import {useQuery} from "react-query";
 import {useState} from "react";
 import VStack from "../../basicComponents/VStack";
 import ToDo from "../ToDo/ToDo";
+import { FiEdit } from 'react-icons/fi';
+import "./DescriptionBodyOfTodoLists.css";
 
 function DescriptionBodyOfTodoLists(){
 
@@ -35,7 +37,7 @@ function DescriptionBodyOfTodoLists(){
                 <VStack gap={1}>
                     <HStack gap={16} alignItems={"center"}>
                         <Text type={"title"} children={title}></Text>
-                        <Link to={`/main/${idList}/listUpdate`}>Update</Link>
+                        <Link to={`/main/${idList}/listUpdate`}><FiEdit size={24} className={"listUpdateEditIcon"}/></Link>
                     </HStack>
                         <Text type={"body"} children={description}></Text>
                     {

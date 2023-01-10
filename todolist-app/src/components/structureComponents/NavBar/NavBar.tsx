@@ -3,6 +3,8 @@ import "./NavBar.css";
 import HStack from "../../basicComponents/HStack";
 import { FiLogOut, FiSettings } from 'react-icons/fi';
 
+
+
 function AboutNavBar(){
     return (
         <>
