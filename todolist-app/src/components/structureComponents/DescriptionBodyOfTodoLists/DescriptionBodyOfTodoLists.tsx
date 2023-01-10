@@ -5,7 +5,7 @@ import {useQuery} from "react-query";
 import {useState} from "react";
 import VStack from "../../basicComponents/VStack";
 import ToDo from "../ToDo/ToDo";
-import { FiEdit } from 'react-icons/fi';
+import { FiEdit, FiPlusCircle, FiTrash } from 'react-icons/fi';
 import "./DescriptionBodyOfTodoLists.css";
 
 function DescriptionBodyOfTodoLists(){
@@ -35,11 +35,21 @@ function DescriptionBodyOfTodoLists(){
     return(
         <>
                 <VStack gap={1}>
-                    <HStack gap={16} alignItems={"center"}>
-                        <Text type={"title"} children={title}></Text>
-                        <Link to={`/main/${idList}/listUpdate`}><FiEdit size={24} className={"listUpdateEditIcon"}/></Link>
-                    </HStack>
+                    <div className={"listDescription"}>
+                        <HStack gap={20} alignItems={"center"}>
+                            <Text type={"title"} children={title}></Text>
+                            <HStack gap={8}>
+                                <Link to={`/main/${idList}/listUpdate`}><FiEdit size={32} className={"listUpdateEditIcon"}/></Link>
+                                <Link to={`/main/${idList}/listDelete`}><FiTrash size={32} className={"listDeleteIcon"}/></Link>
+                            </HStack>
+                        </HStack>
                         <Text type={"body"} children={description}></Text>
+                    </div>
+                        <HStack gap={4} justifyContent={"center"}>
+                            <Link to={`/main/${idList}/createTodo`}>
+                                <FiPlusCircle size={32} className={"todoAddIcon"}/>
+                            </Link>
+                        </HStack>
                     {
                           list.todos.length ?
                               list.todos.map((todo: any) => {

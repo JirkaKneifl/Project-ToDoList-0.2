@@ -1,5 +1,5 @@
 import './App.css';
-import { Route ,Routes} from "react-router-dom";
+import { Route, Routes} from "react-router-dom";
 import About from "./pages/About/About";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
@@ -9,6 +9,7 @@ import {QueryClient , QueryClientProvider} from "react-query";
 import MainDetailList from "./pages/MainDetailList/MainDetailList";
 import MainUpdateList from "./pages/MainUpdateList/MainUpdateList";
 import MainCreateList from "./pages/MainCerateList/MineCreateList";
+import MainCreateTodo from "./pages/MainCreateTodo/MainCreateTodo";
 
 function App() {
     const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ function App() {
             <Route path={"/main/:idList"} element={<MainDetailList/>}></Route>
             <Route path={"/main/:idList/listUpdate"} element={<MainUpdateList/>}></Route>
             <Route path={"/main/createList"} element={<MainCreateList/>}></Route>
+            <Route path={"/main/:idList/createTodo"} element={<MainCreateTodo/>}></Route>
         </Routes>
       </QueryClientProvider>
 )

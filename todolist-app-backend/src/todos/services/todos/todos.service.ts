@@ -4,26 +4,29 @@ import {Todo} from "../../../typeorm/entities/Todo";
 import {Repository} from "typeorm";
 import {UpdateTodoParams} from "../../types/UpdateTodoParams.type";
 import {CreateTodoParams} from "../../types/CreateTodoParams.type";
+import {List} from "../../../typeorm/entities/List";
 
 @Injectable()
 export class TodosService {
 
-    constructor(@InjectRepository(Todo) private todoRepository: Repository<Todo>) {
-    }
+    constructor(
+        @InjectRepository(Todo) private todoRepository: Repository<Todo>,
+        @InjectRepository(List) private listRepository: Repository<List>
+    ) {}
 
-    findeAllTodos(){
-        return this.todoRepository.find();
-    }
 
-    findeTodosByList(id_todo: number){
-        return this.todoRepository.find({
-            where: {id_todo}
-        })
-    }
 
-    CreateTodo(createTodoDetails: CreateTodoParams){
-        const newTodo = this.todoRepository.create({ ...createTodoDetails})
-        this.todoRepository.save(newTodo);
+    async createTodo(id_list ,createTodoDto){
+        const newTodo = new Todo();
+        const list = await this.listRepository.findOne({
+                where: { id_list }
+            });
+
+        newTodo.title = createTodoDto.title;
+        newTodo.created_at = new Date();
+        newTodo.list = list;
+
+        await this.todoRepository.save(newTodo);
     }
 
     UpdateTodo(id_todo: number, updateTodoDetails: UpdateTodoParams){

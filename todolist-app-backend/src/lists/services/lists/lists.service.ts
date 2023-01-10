@@ -41,7 +41,7 @@ export class ListsService {
     async updateList(id_list: number, updateListDetails: UpdateListParams){
         const list = await this.listRepository.findOne({
             where: {id_list}
-        })
+        });
         list.title = updateListDetails.title;
         list.description = updateListDetails.description;
 
