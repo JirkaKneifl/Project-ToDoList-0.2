@@ -29,11 +29,17 @@ export class TodosService {
         await this.todoRepository.save(newTodo);
     }
 
-    UpdateTodo(id_todo: number, updateTodoDetails: UpdateTodoParams){
-        this.todoRepository.update({id_todo}, {...updateTodoDetails});
+    async findTodoById( id_todo: number){
+        await this.todoRepository.findOne({
+            where: {id_todo}
+        })
     }
 
-    DeleteTodo(id_todo: number){
-        this.todoRepository.delete({id_todo});
+    async UpdateTodo(id_list: number,id_todo: number, updateTodoDto){
+        await this.todoRepository.update({id_todo}, {...updateTodoDto});
+    }
+
+    async DeleteTodo(id_todo: number){
+        await this.todoRepository.delete({id_todo});
     }
 }

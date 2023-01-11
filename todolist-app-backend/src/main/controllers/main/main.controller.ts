@@ -5,6 +5,7 @@ import {CreateTodoDto} from "../../../todos/dtos/CreateTodo.dto";
 import {CreateListDto} from "../../../lists/dtos/CreateList.dto";
 import {UpdateListDto} from "../../../lists/dtos/UpdateList.dto";
 import {Todo} from "../../../typeorm/entities/Todo";
+import {UpdateTodoDto} from "../../../todos/dtos/UpdateTodo.dto";
 
 @Controller('main')
 export class MainController {
@@ -14,7 +15,6 @@ export class MainController {
 
     @Get('/')
     listLists(){
-        //console.log("contoler get na zakladni routu")
         return this.listService.listLists();
     }
 
@@ -25,7 +25,6 @@ export class MainController {
 
     @Get('/:idList')
     async findListById(@Param('idList') idList: string){
-
         return await this.listService.findListById(Number(idList));
     }
 
@@ -41,7 +40,27 @@ export class MainController {
     }
 
     @Post('/:idList/createTodo')
-    async CreateTodo(@Param('idList') idList: string, @Body() createTodoDto: CreateTodoDto){
-        return this.todoService.createTodo(idList, createTodoDto);
+    async CreateTodo(
+        @Param('idList') idList: string,
+        @Body() createTodoDto: CreateTodoDto)
+    {
+        return this.todoService.createTodo(Number(idList), createTodoDto);
+    }
+
+    @Get('/:idList/updateTodo/:idTodo')
+    async GetTodoData(
+        @Param('idList') idList: string,
+        @Param('idTodo') idTodo: string
+    ){
+        return await this.todoService.findTodoById(Number(idTodo))
+    }
+
+    @Put('/:idList/updateTodo/:idTodo')
+    async UpdateTodo(
+        @Param('idList') idList: string,
+        @Param('idTodo') idTodo: string,
+        @Body() updateTodoDto: UpdateTodoDto
+    ){
+        return this.todoService.UpdateTodo(Number(idList), Number(idTodo), updateTodoDto);
     }
 }

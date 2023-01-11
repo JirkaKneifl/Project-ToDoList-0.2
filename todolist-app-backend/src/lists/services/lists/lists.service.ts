@@ -20,7 +20,6 @@ export class ListsService {
 
     //funkce co vraci listy se seznamem todocek
     async findListById(id_list: number){
-        //console.log("service");
         return await this.listRepository.findOne({
             where: {id_list},
             relations: ['todos']

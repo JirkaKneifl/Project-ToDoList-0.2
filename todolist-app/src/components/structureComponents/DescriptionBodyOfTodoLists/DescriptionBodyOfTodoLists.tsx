@@ -40,7 +40,10 @@ function DescriptionBodyOfTodoLists(){
                             <Text type={"title"} children={title}></Text>
                             <HStack gap={8}>
                                 <Link to={`/main/${idList}/listUpdate`}><FiEdit size={32} className={"listUpdateEditIcon"}/></Link>
-                                <Link to={`/main/${idList}/listDelete`}><FiTrash size={32} className={"listDeleteIcon"}/></Link>
+                                {
+                                    !list.todos.length ? <Link to={`/main/${idList}/listDelete`}><FiTrash size={32} className={"listDeleteIcon"}/></Link> : null
+                                }
+
                             </HStack>
                         </HStack>
                         <Text type={"body"} children={description}></Text>
@@ -53,7 +56,7 @@ function DescriptionBodyOfTodoLists(){
                     {
                           list.todos.length ?
                               list.todos.map((todo: any) => {
-                                return (<ToDo key={todo.id_todo} toDoLabel={todo.title}></ToDo>);
+                                return (<ToDo key={todo.id_todo} toDoLabel={todo.title} idTodo={todo.id_todo}></ToDo>);
                               })
                               : <Text type={"small-body"}>Nema zadne Todos</Text>
                     }
