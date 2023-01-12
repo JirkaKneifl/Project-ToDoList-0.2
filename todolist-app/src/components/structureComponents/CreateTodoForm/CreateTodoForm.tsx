@@ -32,12 +32,13 @@ function CreateTodoForm(){
                     <Text type={"title"} children={"Add new Todo"}/>
                     <Text type={"body"} children={"Title"}></Text>
                     <input
+                        className={"titleInput"}
                         type={"text"}
                         name={title}
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                     />
-                    <button type={"submit"} children={"Add List"}></button>
+                    <button type={"submit"} children={"Add List"} className={"createButton"}></button>
                 </VStack>
             </form>
         </>

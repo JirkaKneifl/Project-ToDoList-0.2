@@ -9,6 +9,17 @@
 .titleInput:hover{
     border: 2px solid #67AB47;
 }
+.descriptionTextarea{
+    width: 100%;
+    padding: 8px 12px;
+    margin: 8px 0;
+    border-radius: 4px;
+    border: 2px solid #555555;
+    font-size: 16px;
+}
+.descriptionTextarea:hover{
+    border: 2px solid #67AB47;
+}
 .createButton{
     color: white;
     background-color: #67AB47;

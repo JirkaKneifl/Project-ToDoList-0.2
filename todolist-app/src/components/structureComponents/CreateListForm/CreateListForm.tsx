@@ -3,6 +3,7 @@ import Text from "../../basicComponents/Text/Text";
 import * as React from "react";
 import {useState} from "react";
 import {useMutation} from "react-query";
+import './CreateList.css';
 
 
 
@@ -33,6 +34,7 @@ function CreateListForm(){
                     <Text type={"title"} children={"Add new list"}/>
                     <Text type={"body"} children={"Title"}></Text>
                     <input
+                        className={"titleInput"}
                         type={"text"}
                         name={title}
                         value={title}
@@ -40,13 +42,14 @@ function CreateListForm(){
                     />
                     <Text type={"body"} children={"Description"}></Text>
                     <textarea
+                        className={"descriptionTextarea"}
                         name={description}
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         rows={5}
                         cols={20}
                     />
-                    <button type={"submit"} children={"Add List"}></button>
+                    <button type={"submit"} children={"Add List"} className={"createButton"}></button>
                 </VStack>
             </form>
         </>

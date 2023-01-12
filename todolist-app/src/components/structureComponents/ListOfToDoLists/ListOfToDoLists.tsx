@@ -1,9 +1,11 @@
 import VStack from "../../basicComponents/VStack";
 import "./ListOfToDoLists.css";
 import {Link} from "react-router-dom";
-import { IoIosAddCircleOutline } from 'react-icons/io';
+import { FiPlusCircle } from 'react-icons/fi';
 import HrSeparator from "../../basicComponents/HrSeparator/HrSeparator";
 import {useQuery} from "react-query";
+import HStack from "../../basicComponents/HStack";
+import Text from "../../basicComponents/Text/Text";
 
 function ListOfLists(){
 
@@ -22,7 +24,9 @@ function ListOfLists(){
     return (
         <>
             <div className={"listOfToDoListsPanel"}>
-                <VStack alignItems={"stretch"} justifyContent={"flex-start"} gap={1}>
+
+                <HrSeparator width={"80%"}></HrSeparator>
+                <VStack alignItems={"stretch"} justifyContent={"center"} gap={2}>
                     {lists?.map((list: any) => {
                         console.log("jsme v listoftodos", list)
                         const id_list: number = list.id_list;
@@ -31,11 +35,13 @@ function ListOfLists(){
                             to={`/main/${id_list}`}
                             className={"sidebarItem"}
                         >
-                            {list.title}
+                            <Text type={"body"}>{list.title}</Text>
                         </Link>
                     })}
                     <HrSeparator width={"80%"}></HrSeparator>
-                    <Link to={"/main/createList"} className={"addButton"}><IoIosAddCircleOutline className={"addButtonIcon"}></IoIosAddCircleOutline>Add</Link>
+                    <HStack gap={1} alignItems={"center"} justifyContent={"space-around"}>
+                        <Link to={"/main/createList"}><FiPlusCircle size={32} className={"addButtonIcon"}></FiPlusCircle></Link>
+                    </HStack>
                 </VStack>
             </div>
         </>
