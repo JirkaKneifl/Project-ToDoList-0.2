@@ -46,6 +46,7 @@ function DescriptionBodyOfTodoLists(){
 
                             </HStack>
                         </HStack>
+                        <Text type={"body"} children={description}></Text>
                     </div>
                         <HStack gap={4} justifyContent={"center"}>
                             <Link to={`/main/${idList}/createTodo`}>

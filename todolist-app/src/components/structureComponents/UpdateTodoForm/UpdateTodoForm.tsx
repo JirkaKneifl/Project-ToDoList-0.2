@@ -54,7 +54,6 @@ function UpdateTodoForm(){
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                     />
-                    <Text type={"body"} children={"Description"}></Text>
 
                     <button className={"updateButton"} type={"submit"} children={"Update"}></button>
                 </VStack>
