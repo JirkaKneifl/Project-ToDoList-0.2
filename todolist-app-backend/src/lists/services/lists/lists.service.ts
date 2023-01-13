@@ -47,7 +47,7 @@ export class ListsService {
         return await this.listRepository.save(list);
     }
 
-    DeleteList(id_list: number){
+    deleteList(id_list: number){
         this.listRepository.delete({id_list});
     }
 }

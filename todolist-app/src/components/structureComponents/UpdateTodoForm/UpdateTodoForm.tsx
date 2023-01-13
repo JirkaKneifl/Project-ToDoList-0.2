@@ -14,7 +14,7 @@ function UpdateTodoForm(){
         isLoading,
         isError,
         error
-    } = useQuery(
+    } = useQuery<unknown, Error>(
         ['todo', idList, idTodo ],
         () => fetch(`http://localhost:3001/main/${idList}/updateTodo/${idTodo}`).then((res) => res.json()),
         {
@@ -39,7 +39,7 @@ function UpdateTodoForm(){
     }
 
     if (isLoading) return <p>Loading</p>;
-    if (isError) return <p>Error: {error as string}</p>;
+    if (isError) return <p>Error: {error?.message}</p>;
 
     return (
         <>

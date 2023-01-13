@@ -46,7 +46,6 @@ function DescriptionBodyOfTodoLists(){
 
                             </HStack>
                         </HStack>
-                        <Text type={"body"} children={description}></Text>
                     </div>
                         <HStack gap={4} justifyContent={"center"}>
                             <Link to={`/main/${idList}/createTodo`}>
@@ -58,7 +57,7 @@ function DescriptionBodyOfTodoLists(){
                               list.todos.map((todo: any) => {
                                 return (<ToDo key={todo.id_todo} toDoLabel={todo.title} idTodo={todo.id_todo}></ToDo>);
                               })
-                              : <Text type={"small-body"}>Nema zadne Todos</Text>
+                              : <Text type={"body"}>Nema zadne Todos</Text>
                     }
                 </VStack>
         </>

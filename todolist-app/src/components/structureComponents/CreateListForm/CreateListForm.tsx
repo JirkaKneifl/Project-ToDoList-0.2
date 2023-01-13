@@ -1,7 +1,7 @@
 import VStack from "../../basicComponents/VStack";
 import Text from "../../basicComponents/Text/Text";
 import * as React from "react";
-import {useState} from "react";
+import {FormEvent, useState} from "react";
 import {useMutation} from "react-query";
 import './CreateList.css';
 
@@ -23,7 +23,7 @@ function CreateListForm(){
         }).catch()
     )
 
-    const handleCreateSubmit = () => {
+    const handleCreateSubmit = async (e: FormEvent) => {
         createListMutation.mutate();
     }
 

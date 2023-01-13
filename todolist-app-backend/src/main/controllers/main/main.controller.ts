@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Param, ParseIntPipe, Post, Put} from '@nestjs/common';
+import {Body, Controller, Get, Param, Post, Put, Redirect, Res} from '@nestjs/common';
 import {ListsService} from "../../../lists/services/lists/lists.service";
 import {TodosService} from "../../../todos/services/todos/todos.service";
 import {CreateTodoDto} from "../../../todos/dtos/CreateTodo.dto";
@@ -19,7 +19,13 @@ export class MainController {
     }
 
     @Post('/createList')
-    CreateList(@Body() createListDto: CreateListDto){
+    async CreateList(
+        @Body() createListDto: CreateListDto,
+        @Res() res
+    ){
+        console.log("redirect")
+        await res.redirect("http://localhost:3000/main/");
+        console.log("redirect po")
         return this.listService.createList(createListDto);
     }
 
@@ -52,6 +58,7 @@ export class MainController {
         @Param('idList') idList: string,
         @Param('idTodo') idTodo: string
     ){
+        console.log(await this.todoService.findTodoById(Number(idTodo)));
         return await this.todoService.findTodoById(Number(idTodo))
     }
 
@@ -62,5 +69,10 @@ export class MainController {
         @Body() updateTodoDto: UpdateTodoDto
     ){
         return this.todoService.UpdateTodo(Number(idList), Number(idTodo), updateTodoDto);
+    }
+
+    @Get('/:idList/deleteList')
+    DeleteList(@Param('idList') idList: string){
+        return this.listService.deleteList(Number(idList))
     }
 }

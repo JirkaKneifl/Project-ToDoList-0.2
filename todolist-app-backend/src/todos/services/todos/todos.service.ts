@@ -2,8 +2,6 @@ import { Injectable } from '@nestjs/common';
 import {InjectRepository} from "@nestjs/typeorm";
 import {Todo} from "../../../typeorm/entities/Todo";
 import {Repository} from "typeorm";
-import {UpdateTodoParams} from "../../types/UpdateTodoParams.type";
-import {CreateTodoParams} from "../../types/CreateTodoParams.type";
 import {List} from "../../../typeorm/entities/List";
 
 @Injectable()
@@ -30,7 +28,7 @@ export class TodosService {
     }
 
     async findTodoById( id_todo: number){
-        await this.todoRepository.findOne({
+        return await this.todoRepository.findOne({
             where: {id_todo}
         })
     }
