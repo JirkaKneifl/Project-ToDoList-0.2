@@ -2,11 +2,13 @@ import VStack from "../../basicComponents/VStack";
 import Text from "../../basicComponents/Text/Text";
 import { useParams} from "react-router-dom";
 import * as React from "react";
-import { useState} from "react";
+import {FormEvent, useState} from "react";
 import {useMutation, useQuery} from "react-query";
 import "./UpdateListForm.css"
+import { useNavigate } from 'react-router-dom';
 
 function UpdateListForm(){
+    const navigate = useNavigate();
     const { idList } = useParams();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -32,11 +34,13 @@ function UpdateListForm(){
             body: JSON.stringify({ title, description })
         }).then(() => {
             console.log("updateListMutation");
+            navigate(`/main/${idList}`);
         }).catch()
     )
 
-    const handleUpdateSubmit = () => {
+    const handleUpdateSubmit = (e: FormEvent) => {
         updateListMutation.mutate();
+        e.preventDefault();
     }
 
     if (isLoading) return <p>Loading</p>;

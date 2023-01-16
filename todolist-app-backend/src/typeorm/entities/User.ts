@@ -1,8 +1,10 @@
-import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {
+    Column,
+    Entity,
+    OneToMany,
+    PrimaryGeneratedColumn
+} from "typeorm";
 import {List} from "./List";
-import {JoinColumn} from "typeorm/browser";
-
-
 
 @Entity({name: 'users'})
 export class User {
@@ -38,6 +40,7 @@ export class User {
         length: 256
     })
     password: string;
-    @OneToMany(() => List, (list) => list.user)
+    @OneToMany(() => List,
+        (list) => list.user)
     lists: List[]
 }

@@ -1,8 +1,13 @@
-import {Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {
+    Column,
+    Entity,
+    JoinColumn,
+    ManyToOne,
+    OneToMany,
+    PrimaryGeneratedColumn
+} from "typeorm";
 import {User} from "./User";
 import {Todo} from "./Todo";
-
-
 
 @Entity({name: 'lists'})
 export class List {
@@ -30,10 +35,12 @@ export class List {
     })
     archivated_at: Date;
 
-    @ManyToOne(() => User, (user) => user.lists)
+    @ManyToOne(() => User,
+        (user) => user.lists)
     @JoinColumn({name: "id_user"})
     user: User;
 
-    @OneToMany(() => Todo, (todo) => todo.list)
+    @OneToMany(() => Todo,
+        (todo) => todo.list)
     todos: Todo[]
 }

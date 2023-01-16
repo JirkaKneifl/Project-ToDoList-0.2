@@ -13,7 +13,6 @@ export class TodosService {
     ) {}
 
 
-
     async createTodo(id_list ,createTodoDto){
         const newTodo = new Todo();
         const list = await this.listRepository.findOne({

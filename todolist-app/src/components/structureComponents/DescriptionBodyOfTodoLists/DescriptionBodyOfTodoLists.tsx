@@ -1,15 +1,15 @@
 import Text from "../../basicComponents/Text/Text";
 import HStack from "../../basicComponents/HStack";
-import {Link, useParams} from "react-router-dom";
-import {useQuery} from "react-query";
-import {useState} from "react";
+import {Link, useParams, useNavigate } from "react-router-dom";
+import {useMutation, useQuery} from "react-query";
+import {FormEvent, useState} from "react";
 import VStack from "../../basicComponents/VStack";
 import ToDo from "../ToDo/ToDo";
 import { FiEdit, FiPlusCircle, FiTrash } from 'react-icons/fi';
 import "./DescriptionBodyOfTodoLists.css";
 
 function DescriptionBodyOfTodoLists(){
-
+    const navigate = useNavigate();
     const { idList } = useParams();
     const [title, setTitle] = useState();
     const [description, setDescription] = useState();
@@ -29,6 +29,20 @@ function DescriptionBodyOfTodoLists(){
             }
         }
     );
+
+    const deleteListMutation = useMutation(['deleteList', idList], async () =>
+        await fetch(`http://localhost:3001/main/${idList}/deleteList`, {
+            method: 'DELETE',
+        }).then(()=>{
+            console.log("deleteListMutation");
+        })
+    )
+
+    const handleListDelete = (e: FormEvent) => {
+        e.preventDefault();
+        deleteListMutation.mutate();
+    }
+
     if (isLoading) return <p>Loading</p>;
     if (isError) return <p>Error: {error as string}</p>;
 
@@ -41,7 +55,13 @@ function DescriptionBodyOfTodoLists(){
                             <HStack gap={8}>
                                 <Link to={`/main/${idList}/listUpdate`}><FiEdit size={32} className={"listUpdateEditIcon"}/></Link>
                                 {
-                                    !list.todos.length ? <Link to={`/main/${idList}/listDelete`}><FiTrash size={32} className={"listDeleteIcon"}/></Link> : null
+                                    !list.todos.length ?
+                                        <form onSubmit={handleListDelete}>
+                                            <button type={"submit"}>
+                                                <Link to={`/main/${idList}/deleteList`}><FiTrash size={32} className={"listDeleteIcon"}/></Link>
+                                            </button>
+                                        </form>
+                                        : null
                                 }
 
                             </HStack>

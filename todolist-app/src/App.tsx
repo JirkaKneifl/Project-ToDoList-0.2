@@ -27,6 +27,7 @@ function App() {
             <Route path={"/main/:idList/listUpdate"} element={<MainUpdateList/>}></Route>
             <Route path={"/main/createList"} element={<MainCreateList/>}></Route>
             <Route path={"/main/:idList/createTodo"} element={<MainCreateTodo/>}></Route>
+            <Route path={"/main/:idList/deleteList"}></Route>
             <Route path={"/main/:idList/updateTodo/:idTodo"} element={<MainUpdateTodo></MainUpdateTodo>}></Route>
         </Routes>
       </QueryClientProvider>

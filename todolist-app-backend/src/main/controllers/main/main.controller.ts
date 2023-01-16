@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Param, Post, Put, Redirect, Res} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post, Put, Redirect, Res} from '@nestjs/common';
 import {ListsService} from "../../../lists/services/lists/lists.service";
 import {TodosService} from "../../../todos/services/todos/todos.service";
 import {CreateTodoDto} from "../../../todos/dtos/CreateTodo.dto";
@@ -71,7 +71,7 @@ export class MainController {
         return this.todoService.UpdateTodo(Number(idList), Number(idTodo), updateTodoDto);
     }
 
-    @Get('/:idList/deleteList')
+    @Delete('/:idList/deleteList')
     DeleteList(@Param('idList') idList: string){
         return this.listService.deleteList(Number(idList))
     }

@@ -1,6 +1,12 @@
-import {Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {
+    Column,
+    Entity,
+    JoinColumn,
+    ManyToOne,
+    OneToMany,
+    PrimaryGeneratedColumn
+} from "typeorm";
 import {List} from "./List";
-
 
 @Entity({name: 'todos'})
 export class Todo {
@@ -32,7 +38,8 @@ export class Todo {
     })
     is_done;
 
-    @ManyToOne(() => List, (list) => list.todos)
+    @ManyToOne(() => List,
+        (list) => list.todos)
     @JoinColumn({name: "id_list"})
     list: List;
 }

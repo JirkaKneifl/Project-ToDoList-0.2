@@ -1,12 +1,15 @@
 import Text from "../../basicComponents/Text/Text";
 import VStack from "../../basicComponents/VStack";
 import * as React from "react";
-import {useState} from "react";
+import {FormEvent, useState} from "react";
 import {useParams} from "react-router-dom";
 import {useMutation, useQuery} from "react-query";
 import './UpdateTodoForm.css';
+import { useNavigate } from 'react-router-dom';
+
 
 function UpdateTodoForm(){
+    const navigate = useNavigate();
     const { idList, idTodo } = useParams();
     const [title, setTitle] = useState('');
 
@@ -31,11 +34,13 @@ function UpdateTodoForm(){
             body: JSON.stringify({ title })
         }).then(()=>{
             console.log("updateTodoMutation");
+            navigate(`/main/${idList}`)
         }).catch()
     )
 
-    const handleUpdateSubmit = () => {
+    const handleUpdateSubmit = (e: FormEvent) => {
         updateTodoMutation.mutate();
+        e.preventDefault();
     }
 
     if (isLoading) return <p>Loading</p>;

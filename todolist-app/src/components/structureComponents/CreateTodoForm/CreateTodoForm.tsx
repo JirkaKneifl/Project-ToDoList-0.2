@@ -1,12 +1,13 @@
-import {useState} from "react";
+import {FormEvent, useState} from "react";
 import {useMutation} from "react-query";
 import {redirect, useParams} from "react-router-dom";
 import VStack from "../../basicComponents/VStack";
 import Text from "../../basicComponents/Text/Text";
 import * as React from "react";
-
+import { useNavigate } from 'react-router-dom';
 
 function CreateTodoForm(){
+    const navigate = useNavigate();
     const { idList } = useParams();
     const [title, setTitle] = useState('');
 
@@ -17,12 +18,13 @@ function CreateTodoForm(){
             body: JSON.stringify({ title })
         }).then(() => {
             console.log("createListMutation");
+            navigate(`/main/${idList}`)
         }).catch()
     )
 
-    const handleCreateSubmit = () => {
+    const handleCreateSubmit = (e: FormEvent) => {
         createTodoMutation.mutate();
-        return redirect("http://localhost:3000/main/:idList");
+        e.preventDefault();
     }
 
     return (
@@ -38,7 +40,7 @@ function CreateTodoForm(){
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                     />
-                    <button type={"submit"} children={"Add List"} className={"createButton"}></button>
+                    <button type={"submit"} children={"Add Todo"} className={"createButton"}></button>
                 </VStack>
             </form>
         </>

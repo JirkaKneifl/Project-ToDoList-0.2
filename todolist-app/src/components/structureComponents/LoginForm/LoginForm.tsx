@@ -8,27 +8,36 @@ import "./LoginForm.css"
 
 
 function LoginForm(){
-    const handleLoginSubmit =  {
+
+    const handleSubmit =()=>{
 
     }
 
     return (
         <>
             <div className={"loginForm"}>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <VStack gap={1}>
                         <Text type={"title"} children={"Login"}></Text>
                         <VStack gap={1} justifyContent={"flex-start"}>
                             <Text type={"body"}>Email: </Text>
-                            <input type={"email"}/>
+                            <input
+                                type={"email"}
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                required
+                            />
                             <Text type={"body"}>Password: </Text>
-                            <input type={"password"}/>
+                            <input
+                                type={"password"}
+                                pattern="^[a-zA-Z\d!@#$%^&*]{6,30}$"
+                                required
+                            />
                         </VStack>
                         <VStack gap={1} justifyContent={"flex-start"} alignItems={"center"}>
-                            <Button onClick={handleLoginSubmit} label={"Login"}></Button>
+                            <button type={"submit"}>Login</button>
                         </VStack>
                         <HStack gap={1} alignItems={"baseline"}>
-                            <Text type={"small-body"} children={"Don't have an account yet?"}></Text><Link to={"/register"}>Register</Link>
+                            <Text type={"small-body"} children={"Don't have an account yet?"}></Text><Link to={"/register"} className={"link"}>Register</Link>
                         </HStack>
                     </VStack>
                 </form>

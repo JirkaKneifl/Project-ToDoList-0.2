@@ -4,10 +4,12 @@ import * as React from "react";
 import {FormEvent, useState} from "react";
 import {useMutation} from "react-query";
 import './CreateList.css';
+import { useNavigate } from 'react-router-dom';
 
 
 
 function CreateListForm(){
+    const navigate = useNavigate();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
 
@@ -20,11 +22,13 @@ function CreateListForm(){
             body: JSON.stringify({ title, description})
         }).then(() => {
             console.log("createListMutation");
+            navigate('/main');
         }).catch()
     )
 
     const handleCreateSubmit = async (e: FormEvent) => {
         createListMutation.mutate();
+        e.preventDefault();
     }
 
     return(
