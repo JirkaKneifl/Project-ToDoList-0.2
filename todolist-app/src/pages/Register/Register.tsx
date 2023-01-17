@@ -2,17 +2,21 @@ import RegisterForm from "../../components/structureComponents/RegisterForm/Regi
 import "./Register.css"
 import Text from "../../components/basicComponents/Text/Text";
 import VStack from "../../components/basicComponents/VStack";
-import {useMutation} from "react-query";
+import * as React from "react";
 
 function Register() {
 
 
     return(
         <>
-            <VStack gap={1} alignItems={"center"}>
-                <Text type={"title"} children={"ToDo App"}></Text>
-                <RegisterForm></RegisterForm>
-            </VStack>
+            <div className={"backgroundOfPage"}>
+                <VStack gap={1} alignItems={"center"}>
+                    <div className={"toDoLogo"}>
+                        <Text type={"title"} children={"ToDo App"}/>
+                    </div>
+                    <RegisterForm></RegisterForm>
+                </VStack>
+            </div>
         </>
     )
 }

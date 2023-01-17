@@ -7,10 +7,14 @@ import "./Login.css"
 function Login() {
     return(
         <>
-            <VStack gap={1} alignItems={"center"}>
-                <Text type={"title"} children={"ToDo App"}/>
-                <LoginForm></LoginForm>
-            </VStack>
+            <div className={"backgroundOfPage"}>
+                <VStack gap={1} alignItems={"center"}>
+                    <div className={"toDoLogo"}>
+                        <Text type={"title"} children={"ToDo App"}/>
+                    </div>
+                    <LoginForm></LoginForm>
+                </VStack>
+            </div>
         </>
     )
 }
