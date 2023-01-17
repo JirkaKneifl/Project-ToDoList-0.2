@@ -4,6 +4,7 @@ import "./ToDo.css";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import { FiTrash, FiEdit } from 'react-icons/fi';
 import VStack from "../../basicComponents/VStack";
+import Text from "../../basicComponents/Text/Text";
 
 type toDoProps ={
     toDoLabel: string
@@ -20,11 +21,11 @@ function ToDo(props: toDoProps) {
             <HStack gap={8} justifyContent={"space-between"} alignItems={"center"}>
                 <HStack gap={4} justifyContent={"center"} alignItems={"center"}>
                     <input type="checkbox"/>
-                    <label>{props.toDoLabel}</label>
+                    <Text type={"body"}>{props.toDoLabel}</Text>
                 </HStack>
                 <HStack gap={4}>
                     {/*<Button label={"Archvate"}></Button> -> archvovabni na posledy*/}
-                    <button className={"onlyIconButton"}><Link to={`/main/${idList}/updateTodo/${props.idTodo}`}><FiEdit size={20} className={"editTodoIcon"}/></Link></button>
+                    <button className={"onlyIconButton"}><Link to={`/main/${idList}/updateTodo/${props.idTodo}`}><FiEdit size={28} className={"editTodoIcon"}/></Link></button>
                     <button className={"onlyIconButton"} onClick={(e) => {
                         fetch(`http://localhost:3001/main/${idList}/deleteTodo/${props.idTodo}`, { method: "DELETE" })
                             .then((response) => {
@@ -38,7 +39,7 @@ function ToDo(props: toDoProps) {
                             });
                     }}>
                         <Link to={''}>
-                            <FiTrash size={20} className={"deleteTodoIcon"}/>
+                            <FiTrash size={28} className={"deleteTodoIcon"}/>
                         </Link>
                     </button>
                 </HStack>

@@ -38,7 +38,7 @@ function DescriptionBodyOfTodoLists(){
         <>
                 <VStack gap={1}>
                     <div className={"listDescription"}>
-                        <HStack gap={20} alignItems={"center"}>
+                        <HStack gap={38} alignItems={"center"}>
                             <Text type={"title"} children={title}></Text>
                             <HStack gap={8}>
                                 <button className={"onlyIconButton"}>
