@@ -27,17 +27,26 @@ function ListOfLists(){
 
                 <HrSeparator width={"80%"}></HrSeparator>
                 <VStack alignItems={"stretch"} justifyContent={"center"} gap={2}>
-                    {lists?.map((list: any) => {
-                        console.log("jsme v listoftodos", list)
-                        const id_list: number = list.id_list;
-                        return <Link
-                            key={list.id_list}
-                            to={`/main/${id_list}`}
-                            className={"sidebarItem"}
-                        >
-                            <Text type={"body"}>{list.title}</Text>
-                        </Link>
-                    })}
+                    {
+                        !lists.length
+                            ? <HStack gap={16} justifyContent={"center"}>
+                                <VStack gap={0} alignItems={"center"}>
+                                    <Text type={"body"} children={"No lists!"}/>
+                                    <Text type={"small-body"} children={"Let's go and add some."}/>
+                                </VStack>
+                              </HStack>
+                            : lists?.map((list: any) => {
+                                console.log("jsme v listoftodos", list)
+                                const id_list: number = list.id_list;
+                                return <Link
+                                    key={list.id_list}
+                                    to={`/main/${id_list}`}
+                                    className={"sidebarItem"}
+                                >
+                                    <Text type={"body"}>{list.title}</Text>
+                                </Link>
+                            })
+                    }
                     <HrSeparator width={"80%"}></HrSeparator>
                     <HStack gap={1} alignItems={"center"} justifyContent={"space-around"}>
                         <Link to={"/main/createList"}><FiPlusCircle size={32} className={"addButtonIcon"}></FiPlusCircle></Link>

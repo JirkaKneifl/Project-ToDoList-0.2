@@ -10,10 +10,10 @@ import { useNavigate } from 'react-router-dom';
 
 function RegisterForm(){
     const navigate = useNavigate();
-    const [first_name, setFirstName] = useState('sagdag');
-    const [last_name, setLastName] = useState('gdsag');
-    const [email, setEmail] = useState('sdgas@sffas.cd');
-    const [phone, setPhone] = useState('123 456 789');
+    const [first_name, setFirstName] = useState('Jirka');
+    const [last_name, setLastName] = useState('Kneifl');
+    const [email, setEmail] = useState('Jirka.kneifl@email.cz');
+    const [phone, setPhone] = useState('123456789');
     const [password, setPassword] = useState('');
 
     const createUserMutation = useMutation('createUser', () =>
