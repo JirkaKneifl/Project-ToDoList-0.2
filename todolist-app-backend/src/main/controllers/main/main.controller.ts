@@ -75,4 +75,9 @@ export class MainController {
     DeleteList(@Param('idList') idList: string){
         return this.listService.deleteList(Number(idList))
     }
+
+    @Delete('/:idList/deleteTodo/:idTodo')
+    DeleteTodo(@Param('idTodo') idTodo: string){
+        return this.todoService.deleteTodo(Number(idTodo))
+    }
 }

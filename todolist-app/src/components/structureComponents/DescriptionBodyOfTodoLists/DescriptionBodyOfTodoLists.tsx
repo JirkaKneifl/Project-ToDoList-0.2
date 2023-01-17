@@ -30,18 +30,6 @@ function DescriptionBodyOfTodoLists(){
         }
     );
 
-    const deleteListMutation = useMutation(['deleteList', idList], async () =>
-        await fetch(`http://localhost:3001/main/${idList}/deleteList`, {
-            method: 'DELETE',
-        }).then(()=>{
-            console.log("deleteListMutation");
-        })
-    )
-
-    const handleListDelete = (e: FormEvent) => {
-        e.preventDefault();
-        deleteListMutation.mutate();
-    }
 
     if (isLoading) return <p>Loading</p>;
     if (isError) return <p>Error: {error as string}</p>;
@@ -53,14 +41,27 @@ function DescriptionBodyOfTodoLists(){
                         <HStack gap={20} alignItems={"center"}>
                             <Text type={"title"} children={title}></Text>
                             <HStack gap={8}>
-                                <Link to={`/main/${idList}/listUpdate`}><FiEdit size={32} className={"listUpdateEditIcon"}/></Link>
+                                <button className={"onlyIconButton"}>
+                                    <Link to={`/main/${idList}/listUpdate`}><FiEdit size={32} className={"listUpdateEditIcon"}/></Link>
+                                </button>
                                 {
-                                    !list.todos.length ?
-                                        <form onSubmit={handleListDelete}>
-                                            <button type={"submit"}>
-                                                <Link to={`/main/${idList}/deleteList`}><FiTrash size={32} className={"listDeleteIcon"}/></Link>
-                                            </button>
-                                        </form>
+                                    !list.todos.length
+                                        ?
+
+                                        <button className={"onlyIconButton"} onClick={(e) =>{
+                                            fetch(`http://localhost:3001/main/${idList}/deleteList`, { method: "DELETE" })
+                                                .then((response) => {
+                                                    if(!response.ok){
+                                                        throw new Error('Something went wrong');
+                                                    }
+                                                    navigate('/main');
+                                                })
+                                                .catch((e) => {
+                                                    console.log(e);
+                                                });
+                                        }}>
+                                            <Link to={''}><FiTrash size={32} className={"listDeleteIcon"}/></Link>
+                                        </button>
                                         : null
                                 }
 
@@ -68,17 +69,17 @@ function DescriptionBodyOfTodoLists(){
                         </HStack>
                         <Text type={"body"} children={description}></Text>
                     </div>
-                        <HStack gap={4} justifyContent={"center"}>
-                            <Link to={`/main/${idList}/createTodo`}>
-                                <FiPlusCircle size={32} className={"todoAddIcon"}/>
-                            </Link>
-                        </HStack>
+                    <HStack gap={4} justifyContent={"center"}>
+                        <Link to={`/main/${idList}/createTodo`}>
+                            <FiPlusCircle size={32} className={"todoAddIcon"}/>
+                        </Link>
+                    </HStack>
                     {
-                          list.todos.length ?
-                              list.todos.map((todo: any) => {
+                        list.todos.length ?
+                            list.todos.map((todo: any) => {
                                 return (<ToDo key={todo.id_todo} toDoLabel={todo.title} idTodo={todo.id_todo}></ToDo>);
-                              })
-                              : <Text type={"body"}>Nema zadne Todos</Text>
+                            })
+                            : <Text type={"small-body"}>There are no todos!</Text>
                     }
                 </VStack>
         </>

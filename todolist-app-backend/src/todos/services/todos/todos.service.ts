@@ -36,7 +36,7 @@ export class TodosService {
         await this.todoRepository.update({id_todo}, {...updateTodoDto});
     }
 
-    async DeleteTodo(id_todo: number){
+    async deleteTodo(id_todo: number){
         await this.todoRepository.delete({id_todo});
     }
 }
