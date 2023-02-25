@@ -19,9 +19,10 @@ type languageProps = {
 
 
 function LanguageProvider(props: languageProps) {
-    const [locale, setLocale] = useState("en");
+    const [locale, setLocale] = useState(localStorage.getItem("locale") || "en");
 
     const changeLang = (newValue: string) => {
+        localStorage.setItem("locale", newValue);
         setLocale(newValue);
     };
 
