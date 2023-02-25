@@ -5,6 +5,7 @@ import VStack from "../../basicComponents/VStack";
 import Text from "../../basicComponents/Text/Text";
 import * as React from "react";
 import { useNavigate } from 'react-router-dom';
+import {FormattedMessage} from "react-intl";
 
 function CreateTodoForm(){
     const navigate = useNavigate();
@@ -31,8 +32,8 @@ function CreateTodoForm(){
         <>
             <form onSubmit={handleCreateSubmit}>
                 <VStack gap={1}>
-                    <Text type={"title"} children={"Add new Todo"}/>
-                    <Text type={"body"} children={"Title"}></Text>
+                    <Text type={"title"} children={<FormattedMessage id={"title.createTodoForm.addTodo"}/> }/>
+                    <Text type={"body"} children={<FormattedMessage id={"label.title"}/>}></Text>
                     <input
                         className={"titleInput"}
                         type={"text"}
@@ -40,7 +41,7 @@ function CreateTodoForm(){
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                     />
-                    <button type={"submit"} children={"Add Todo"} className={"createButton"}></button>
+                    <button type={"submit"} children={<FormattedMessage id={"label.addTodo"}/>} className={"createButton"}></button>
                 </VStack>
             </form>
         </>

@@ -1,6 +1,8 @@
 import {Link} from "react-router-dom";
 import "./AboutNavBar.css";
 import HStack from "../../basicComponents/HStack";
+import SwitchLanguageButton from "../../contexts/language/SwitchLanguageButton";
+import {FormattedMessage} from "react-intl";
 
 function AboutNavBar(){
     return (
@@ -9,8 +11,8 @@ function AboutNavBar(){
                 <HStack alignItems={"baseline"}  gap={340}>
                     <h2><Link to={"/"} className={"toDoLogo"}>ToDo App</Link></h2>
                     <HStack gap={4} >
-                        <Link className={"aboutNavLink"} to={"/login"}>Login</Link>
-                        <Link className={"aboutNavLink"} to={"/register"}>Register</Link>
+                        <Link className={"aboutNavLink"} to={"/login"}><FormattedMessage id={"Login"}/></Link>
+                        <Link className={"aboutNavLink"} to={"/register"}><FormattedMessage id={"Register"}/></Link>
                     </HStack>
                 </HStack>
             </div>

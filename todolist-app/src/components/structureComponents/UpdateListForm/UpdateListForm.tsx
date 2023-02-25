@@ -6,6 +6,7 @@ import {FormEvent, useState} from "react";
 import {useMutation, useQuery} from "react-query";
 import "./UpdateListForm.css"
 import { useNavigate } from 'react-router-dom';
+import {FormattedMessage} from "react-intl";
 
 function UpdateListForm(){
     const navigate = useNavigate();
@@ -49,9 +50,9 @@ function UpdateListForm(){
     return(
         <>
             <form onSubmit={handleUpdateSubmit}>
-                <Text type={"title"} children={"Update this list"}/>
+                <Text type={"title"} children={<FormattedMessage id={"title.updateListForm.updateList"}/> }/>
                 <VStack gap={1}>
-                    <Text type={"body"} children={"Title"}></Text>
+                    <Text type={"body"} children={<FormattedMessage id={"label.title"}/>}></Text>
                     <input
                         className={"titleInput"}
                         type={"text"}
@@ -59,7 +60,7 @@ function UpdateListForm(){
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                     />
-                    <Text type={"body"} children={"Description"}></Text>
+                    <Text type={"body"} children={<FormattedMessage id={"label.description"}/>}></Text>
                     <textarea
                         className={"descriptionTextarea"}
                         name={description}
@@ -69,7 +70,7 @@ function UpdateListForm(){
                         cols={20}
                     ></textarea>
 
-                    <button className={"updateButton"} type={"submit"} children={"Update"}></button>
+                    <button className={"updateButton"} type={"submit"} children={<FormattedMessage id={"label.update"}/>}></button>
                 </VStack>
             </form>
         </>

@@ -6,6 +6,7 @@ import HrSeparator from "../../basicComponents/HrSeparator/HrSeparator";
 import {useQuery} from "react-query";
 import HStack from "../../basicComponents/HStack";
 import Text from "../../basicComponents/Text/Text";
+import {FormattedMessage} from "react-intl";
 
 function ListOfLists(){
 
@@ -31,8 +32,8 @@ function ListOfLists(){
                         !lists.length
                             ? <HStack gap={16} justifyContent={"center"}>
                                 <VStack gap={0} alignItems={"center"}>
-                                    <Text type={"body"} children={"No lists!"}/>
-                                    <Text type={"small-body"} children={"Let's go and add some."}/>
+                                    <Text type={"body"} children={<FormattedMessage id={"body.listOfToDoLists.noLists"}/> }/>
+                                    <Text type={"small-body"} children={<FormattedMessage id={"body.listOfToDoLists.letsGoAdd"}/>}/>
                                 </VStack>
                               </HStack>
                             : lists?.map((list: any) => {

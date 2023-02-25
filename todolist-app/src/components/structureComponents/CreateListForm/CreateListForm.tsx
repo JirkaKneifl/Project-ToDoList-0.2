@@ -5,6 +5,7 @@ import {FormEvent, useState} from "react";
 import {useMutation} from "react-query";
 import './CreateList.css';
 import { useNavigate } from 'react-router-dom';
+import {FormattedMessage} from "react-intl";
 
 
 
@@ -35,8 +36,8 @@ function CreateListForm(){
         <>
             <form onSubmit={handleCreateSubmit}>
                 <VStack gap={1}>
-                    <Text type={"title"} children={"Add new list"}/>
-                    <Text type={"body"} children={"Title"}></Text>
+                    <Text type={"title"} children={<FormattedMessage id={"title.createListForm.addList"}/> }/>
+                    <Text type={"body"} children={<FormattedMessage id={"label.title"}/>}></Text>
                     <input
                         className={"titleInput"}
                         type={"text"}
@@ -44,7 +45,7 @@ function CreateListForm(){
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                     />
-                    <Text type={"body"} children={"Description"}></Text>
+                    <Text type={"body"} children={<FormattedMessage id={"label.description"}/> }></Text>
                     <textarea
                         className={"descriptionTextarea"}
                         name={description}
@@ -53,7 +54,7 @@ function CreateListForm(){
                         rows={5}
                         cols={20}
                     />
-                    <button type={"submit"} children={"Add List"} className={"createButton"}></button>
+                    <button type={"submit"} children={<FormattedMessage id={"label.addList"}/> } className={"createButton"}></button>
                 </VStack>
             </form>
         </>

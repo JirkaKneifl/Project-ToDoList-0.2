@@ -7,6 +7,7 @@ import "./RegisterForm.css"
 import {useMutation} from "react-query";
 import {FormEvent, useState} from "react";
 import { useNavigate } from 'react-router-dom';
+import {FormattedMessage} from "react-intl";
 
 function RegisterForm(){
     const navigate = useNavigate();
@@ -36,9 +37,9 @@ function RegisterForm(){
             <div className={"registerForm"}>
                 <form onSubmit={handleRegisterSubmit}>
                     <VStack gap={1}>
-                        <Text type={"title"} children={"Register"}></Text>
+                        <Text type={"title"} children={<FormattedMessage id={"Register"}/>}></Text>
                         <VStack gap={1} justifyContent={"flex-start"}>
-                            <Text type={"body"}>First name:</Text>
+                            <Text type={"body"}><FormattedMessage id={"label.first-name"}/></Text>
                             <input
                                 type={"text"}
                                 name={first_name}
@@ -47,7 +48,7 @@ function RegisterForm(){
                                 pattern="[a-zA-Z]+"
                                 required
                             />
-                            <Text type={"body"}>Last name: </Text>
+                            <Text type={"body"}><FormattedMessage id={"label.last-name"}/></Text>
                             <input
                                 type={"text"}
                                 name={last_name}
@@ -56,7 +57,7 @@ function RegisterForm(){
                                 pattern="[a-zA-Z]+"
                                 required
                             />
-                            <Text type={"body"}>Email: </Text>
+                            <Text type={"body"}><FormattedMessage id={"label.email"}/></Text>
                             <input
                                 type={"email"}
                                 name={email}
@@ -65,7 +66,7 @@ function RegisterForm(){
                                 pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                                 required
                             />
-                            <Text type={"body"}>Phone: </Text>
+                            <Text type={"body"}><FormattedMessage id={"label.phone"}/></Text>
                             <input
                                 type={"tel"}
                                 name={phone}
@@ -74,7 +75,7 @@ function RegisterForm(){
                                 pattern="^\d{9}$|^\d{3}[- ]?\d{3}[- ]?\d{3}$"
                                 required
                             />
-                            <Text type={"body"}>Password: </Text>
+                            <Text type={"body"}><FormattedMessage id={"label.password"}/></Text>
                             <input
                                 type={"password"}
                                 name={password}
@@ -86,10 +87,10 @@ function RegisterForm(){
                             <Text type={"small-body"} children={"Test password: P@ssw0rd#5"}></Text>
                         </VStack>
                         <VStack gap={1} justifyContent={"flex-start"} alignItems={"center"}>
-                            <button type={"submit"}>Register</button>
+                            <button type={"submit"}><FormattedMessage id={"Register"}/></button>
                         </VStack>
                         <HStack gap={1} alignItems={"baseline"}>
-                            <Text type={"small-body"} children={"Are you already registered?"}></Text><Link to={"/login"} className={"link"}>Login</Link>
+                            <Text type={"small-body"} children={<FormattedMessage id={"label.question.register"}/>}></Text><Link to={"/login"} className={"link"}><FormattedMessage id={"Login"}/></Link>
                         </HStack>
                     </VStack>
                 </form>

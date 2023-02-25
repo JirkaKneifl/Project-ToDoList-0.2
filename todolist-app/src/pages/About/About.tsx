@@ -3,6 +3,7 @@ import VStack from "../../components/basicComponents/VStack";
 import Text from "../../components/basicComponents/Text/Text";
 import "./About.css"
 import HStack from "../../components/basicComponents/HStack";
+import {FormattedMessage} from "react-intl";
 
 
 function About () {
@@ -12,12 +13,12 @@ function About () {
                 <AboutNavBar></AboutNavBar>
                 <VStack gap={0}>
                     <VStack gap={0} alignItems={"center"}>
-                        <Text type={"title"} children={"Welcome to ToDo App!"}></Text>
+                        <Text type={"title"} children={<FormattedMessage id={"about.title"}/>}></Text>
                     </VStack>
                     <HStack gap={90}>
                         <div></div>
                         <VStack gap={0} alignItems={"center"}>
-                            <Text type={"body"} children={"This is a straightforward and easy-to-use to-do list app."}></Text>
+                            <Text type={"body"} children={<FormattedMessage id={"about.body"}/>}></Text>
                         </VStack>
                         <div></div>
                     </HStack>
@@ -25,19 +26,19 @@ function About () {
                         <div></div>
                         <VStack gap={1}>
                             <VStack gap={1}>
-                                <Text type={"small-body"} children={"Our app is designed to help you keep track of your tasks and to-dos in a simple and organized way. With ToDo App, you can easily create, edit, and delete your to-do lists, and manage the individual tasks within them."}/>
+                                <Text type={"small-body"} children={<FormattedMessage id={"about.small-body1"}/>}/>
                             </VStack>
                             <VStack gap={1}>
-                                <Text type={"small-body"} children={"We understand the importance of staying on top of your to-do list, and that's why we've created an app that is minimalistic yet powerful. Our clean interface makes it easy to navigate, and our basic yet essential tools help you stay organized and on top of your tasks."}/>
+                                <Text type={"small-body"} children={<FormattedMessage id={"about.small-body2"}/>}/>
                             </VStack>
                             <VStack gap={1}>
-                                <Text type={"small-body"} children={"Whether you're a busy professional, a student, or just looking to stay organized, ToDo App is the perfect solution. With our app, you'll be able to create and manage your to-do lists and tasks in a simple and straightforward way. Plus, you'll be able to easily delete tasks and lists once they are completed."}/>
+                                <Text type={"small-body"} children={<FormattedMessage id={"about.small-body3"}/>}/>
                             </VStack>
                             <VStack gap={1}>
-                                <Text type={"small-body"} children={"We are constantly working to improve our app and provide the best user experience. Our team is dedicated to providing you with the tools you need to stay organized, productive, and on top of your to-do list."}/>
+                                <Text type={"small-body"} children={<FormattedMessage id={"about.small-body4"}/>}/>
                             </VStack>
                             <VStack gap={1}>
-                                <Text type={"small-body"} children={"Thank you for choosing ToDo App, and we hope you enjoy using our app as much as we enjoyed creating it."}/>
+                                <Text type={"small-body"} children={<FormattedMessage id={"about.small-body5"}/>}/>
                             </VStack>
                         </VStack>
                         <div></div>

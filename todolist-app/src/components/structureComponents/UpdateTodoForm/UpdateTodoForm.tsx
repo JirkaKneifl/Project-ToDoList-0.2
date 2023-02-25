@@ -6,6 +6,7 @@ import {useParams} from "react-router-dom";
 import {useMutation, useQuery} from "react-query";
 import './UpdateTodoForm.css';
 import { useNavigate } from 'react-router-dom';
+import {FormattedMessage} from "react-intl";
 
 
 function UpdateTodoForm(){
@@ -49,9 +50,9 @@ function UpdateTodoForm(){
     return (
         <>
             <form onSubmit={handleUpdateSubmit}>
-                <Text type={"title"} children={"Update this Todo"}/>
+                <Text type={"title"} children={<FormattedMessage id={"title.updateTodoForm.updateTodo"}/> }/>
                 <VStack gap={1}>
-                    <Text type={"body"} children={"Title"}></Text>
+                    <Text type={"body"} children={<FormattedMessage id={"label.title"}/>}></Text>
                     <input
                         className={"titleInput"}
                         type={"text"}
@@ -60,7 +61,7 @@ function UpdateTodoForm(){
                         onChange={(e) => setTitle(e.target.value)}
                     />
 
-                    <button className={"updateButton"} type={"submit"} children={"Update"}></button>
+                    <button className={"updateButton"} type={"submit"} children={<FormattedMessage id={"label.update"}/>}></button>
                 </VStack>
             </form>
         </>
