@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter } from "react-router-dom";
 import LanguageProvider from "./components/contexts/language/Language";
+import ThemeProvider from "./components/contexts/theme/Theme";
+
 
 
 
@@ -11,7 +13,9 @@ root.render(
     <React.StrictMode>
             <BrowserRouter>
                 <LanguageProvider>
-                    <App />
+                    <ThemeProvider>
+                        <App />
+                    </ThemeProvider>
                 </LanguageProvider>
             </BrowserRouter>
     </React.StrictMode>

@@ -4,6 +4,7 @@ import Text from "../../components/basicComponents/Text/Text";
 import VStack from "../../components/basicComponents/VStack";
 import "./Login.css"
 import SwitchLanguageButton from "../../components/contexts/language/SwitchLanguageButton";
+import SwitchThemeButton from "../../components/contexts/theme/SwitchThemeButton";
 
 function Login() {
     return(
@@ -15,6 +16,7 @@ function Login() {
                         <Text type={"title"} children={"ToDo App"}/>
                     </div>
                     <LoginForm></LoginForm>
+                    <SwitchThemeButton></SwitchThemeButton>
                 </VStack>
             </div>
         </>

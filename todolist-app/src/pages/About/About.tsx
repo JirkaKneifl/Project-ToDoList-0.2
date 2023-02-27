@@ -4,12 +4,14 @@ import Text from "../../components/basicComponents/Text/Text";
 import "./About.css"
 import HStack from "../../components/basicComponents/HStack";
 import {FormattedMessage} from "react-intl";
+import SwitchThemeButton from "../../components/contexts/theme/SwitchThemeButton";
 
 
 function About () {
     return (
         <>
             <section id={"about"}>
+                <SwitchThemeButton></SwitchThemeButton>
                 <AboutNavBar></AboutNavBar>
                 <VStack gap={0}>
                     <VStack gap={0} alignItems={"center"}>
