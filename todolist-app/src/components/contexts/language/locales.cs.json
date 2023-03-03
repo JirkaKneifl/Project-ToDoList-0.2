@@ -28,5 +28,9 @@
   "small-body.descriptionBodyOfTodoLists": "Neexistují žádné úkoly!",
   "title.updateListForm.updateList": "Aktualizovat tento seznam",
   "label.update": "Aktualizovat",
-  "title.updateTodoForm.updateTodo": "Aktualizovat tento úkol"
+  "title.updateTodoForm.updateTodo": "Aktualizovat tento úkol",
+  "label.switchLanguage": "Přepni jazyk do Angličtiny",
+  "title.settings": "Nastavení",
+  "small-body.settings": "Aplikace je nastavena do češtiny.",
+  "body.color.settings": "Barevné možnosti:"
 }

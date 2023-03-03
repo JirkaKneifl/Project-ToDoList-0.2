@@ -1,5 +1,7 @@
 import {useContext, useEffect} from "react";
 import {ThemeContext, themeOptions} from "./Theme";
+import {FormattedMessage} from "react-intl";
+import "./SwitchThemeButton.css";
 
 
 function SwitchThemeButton(){
@@ -25,9 +27,8 @@ function SwitchThemeButton(){
                     style={{ backgroundColor: color }}
                     onClick={() => handleThemeChange(key)}
                     disabled={theme === key}
-                >
-                    {key}
-                </button>
+                    className={"color-button"}
+                ></button>
             ))}
         </>
     );

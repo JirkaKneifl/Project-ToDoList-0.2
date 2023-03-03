@@ -5,12 +5,14 @@ import "./About.css"
 import HStack from "../../components/basicComponents/HStack";
 import {FormattedMessage} from "react-intl";
 import SwitchThemeButton from "../../components/contexts/theme/SwitchThemeButton";
+import SwitchLanguageButton from "../../components/contexts/language/SwitchLanguageButton";
 
 
 function About () {
     return (
         <>
             <section id={"about"}>
+                <SwitchLanguageButton></SwitchLanguageButton>
                 <SwitchThemeButton></SwitchThemeButton>
                 <AboutNavBar></AboutNavBar>
                 <VStack gap={0}>

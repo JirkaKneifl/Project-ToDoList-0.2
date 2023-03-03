@@ -28,6 +28,9 @@
   "small-body.descriptionBodyOfTodoLists": "There are no todos!",
   "title.updateListForm.updateList": "Update this list",
   "label.update": "Update",
-  "title.updateTodoForm.updateTodo": "Update this Todo"
-
+  "title.updateTodoForm.updateTodo": "Update this Todo",
+  "label.switchLanguage": "Switch language into Czech",
+  "title.settings": "Settings",
+  "small-body.settings": "The application is set to English.",
+  "body.color.settings": "Color options:"
 }

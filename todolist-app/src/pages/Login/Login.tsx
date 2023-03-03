@@ -3,20 +3,16 @@ import LoginForm from "../../components/structureComponents/LoginForm/LoginForm"
 import Text from "../../components/basicComponents/Text/Text";
 import VStack from "../../components/basicComponents/VStack";
 import "./Login.css"
-import SwitchLanguageButton from "../../components/contexts/language/SwitchLanguageButton";
-import SwitchThemeButton from "../../components/contexts/theme/SwitchThemeButton";
 
 function Login() {
     return(
         <>
             <div className={"backgroundOfPage"}>
-                <SwitchLanguageButton></SwitchLanguageButton>
                 <VStack gap={1} alignItems={"center"}>
                     <div className={"toDoLogo"}>
                         <Text type={"title"} children={"ToDo App"}/>
                     </div>
                     <LoginForm></LoginForm>
-                    <SwitchThemeButton></SwitchThemeButton>
                 </VStack>
             </div>
         </>
