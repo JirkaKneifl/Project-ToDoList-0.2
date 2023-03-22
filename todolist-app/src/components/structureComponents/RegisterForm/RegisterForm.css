@@ -15,14 +15,14 @@ input{
     font-size: 16px;
 }
 input:hover{
-    border: 2px solid #67AB47;
+    border: 2px solid var(--primary-color);
 }
 input:invalid{
     border: 2px solid red;
 }
 button{
     color: white;
-    background-color: #67AB47;
+    background-color: var(--primary-color);
     border: 1px solid white;
     border-radius: 4px;
     padding: 8px 12px;
@@ -31,7 +31,7 @@ button{
 }
 button:hover{
     color: #dfe0de;
-    background-color: #5d9c40;
+    background-color: var(--primary-color);
 }
 button:active{
     transform: translateY(2px);
@@ -40,5 +40,5 @@ button:active{
     color: #555555;
 }
 .link:hover{
-    color: #67AB47;
+    color: var(--primary-color);
 }

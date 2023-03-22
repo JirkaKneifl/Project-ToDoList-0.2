@@ -11,6 +11,7 @@ import MainUpdateList from "./pages/MainUpdateList/MainUpdateList";
 import MainCreateList from "./pages/MainCerateList/MineCreateList";
 import MainCreateTodo from "./pages/MainCreateTodo/MainCreateTodo";
 import MainUpdateTodo from "./pages/MainUpdateTodo/MainUpdateTodo";
+import Settings from "./pages/MainSettings/Settings";
 
 function App() {
     const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ function App() {
             <Route path={"/main/:idList/createTodo"} element={<MainCreateTodo/>}></Route>
             <Route path={"/main/:idList/deleteList"}></Route>
             <Route path={"/main/:idList/updateTodo/:idTodo"} element={<MainUpdateTodo></MainUpdateTodo>}></Route>
+            <Route path={"/main/settings"} element={<Settings></Settings>}></Route>
         </Routes>
       </QueryClientProvider>
 )

@@ -1,5 +1,5 @@
 .backgroundOfPage{
-    background-color: #67AB47;
+    background-color: var(--primary-color);
     margin: 0;
     padding: 0;
     height: 1200px;

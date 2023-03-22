@@ -1,5 +1,5 @@
 .listUpdateEditIcon:hover{
-    color: #67AB47;
+    color: var(--primary-color);
 }
 .listUpdateEditIcon{
     color: #555555;
@@ -8,7 +8,7 @@
     color: #555555;
 }
 .todoAddIcon:hover{
-    color: #67AB47;
+    color: var(--primary-color);
 }
 .listDeleteIcon{
     color: #555555;

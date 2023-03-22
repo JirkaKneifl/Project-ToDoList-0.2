@@ -12,7 +12,7 @@ function AboutNavBar(){
                 <HStack alignItems={"baseline"}  gap={340}>
                     <h2><Link to={"/main"} className={"toDoLogo"}>ToDo App</Link></h2>
                     <HStack gap={8} >
-                        <Link className={"navLink"} to={"/settings"}><FiSettings className={"navLinkIcon"}></FiSettings></Link>
+                        <Link className={"navLink"} to={"/main/settings"}><FiSettings className={"navLinkIcon"}></FiSettings></Link>
                         <Link className={"navLink"} to={"/"}><FiLogOut className={"navLinkIcon"}></FiLogOut></Link>
                     </HStack>
                 </HStack>

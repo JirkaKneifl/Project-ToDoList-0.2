@@ -7,6 +7,7 @@ import VStack from "../../basicComponents/VStack";
 import ToDo from "../ToDo/ToDo";
 import { FiEdit, FiPlusCircle, FiTrash } from 'react-icons/fi';
 import "./DescriptionBodyOfTodoLists.css";
+import {FormattedMessage} from "react-intl";
 
 function DescriptionBodyOfTodoLists(){
     const navigate = useNavigate();
@@ -79,7 +80,7 @@ function DescriptionBodyOfTodoLists(){
                             list.todos.map((todo: any) => {
                                 return (<ToDo key={todo.id_todo} toDoLabel={todo.title} idTodo={todo.id_todo}></ToDo>);
                             })
-                            : <Text type={"small-body"}>There are no todos!</Text>
+                            : <Text type={"small-body"}><FormattedMessage id={"small-body.descriptionBodyOfTodoLists"}/> </Text>
                     }
                 </VStack>
         </>

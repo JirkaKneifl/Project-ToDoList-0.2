@@ -7,7 +7,7 @@
     font-size: 16px;
 }
 .titleInput:hover{
-    border: 2px solid #67AB47;
+    border: 2px solid var(--primary-color);
 }
 .descriptionTextarea{
     width: 100%;
@@ -18,11 +18,11 @@
     font-size: 16px;
 }
 .descriptionTextarea:hover{
-    border: 2px solid #67AB47;
+    border: 2px solid var(--primary-color);
 }
 .createButton{
     color: white;
-    background-color: #67AB47;
+    background-color: var(--primary-color);
     border: 1px solid white;
     border-radius: 4px;
     padding: 8px 12px;
@@ -31,7 +31,7 @@
 }
 .createButton:hover{
     color: #dfe0de;
-    background-color: #5d9c40;
+    background-color: var(--primary-color);
 }
 .createButton:active {
     transform: translateY(2px);
