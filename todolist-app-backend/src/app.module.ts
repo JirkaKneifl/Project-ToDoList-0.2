@@ -2,14 +2,13 @@ import { Module } from '@nestjs/common';
 import { LoginModule } from './login/login.module';
 import { RegisterModule } from './register/register.module';
 import { MainModule } from './main/main.module';
-import {TypeOrmModule} from "@nestjs/typeorm";
-import {User} from "./typeorm/entities/User";
-import {List} from "./typeorm/entities/List";
-import {Todo} from "./typeorm/entities/Todo";
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from './typeorm/entities/User';
+import { List } from './typeorm/entities/List';
+import { Todo } from './typeorm/entities/Todo';
 import { UsersModule } from './users/users.module';
 import { ListsModule } from './lists/lists.module';
 import { TodosModule } from './todos/todos.module';
-import { AuthModule } from './auth/auth.module';
 import { AuthModule } from './auth/auth.module';
 
 @Module({
@@ -22,7 +21,7 @@ import { AuthModule } from './auth/auth.module';
             password: '',
             database: 'todo-list-app',
             entities: [User, List, Todo],
-            synchronize: true
+            synchronize: true,
         }),
         LoginModule,
         RegisterModule,
@@ -30,7 +29,7 @@ import { AuthModule } from './auth/auth.module';
         UsersModule,
         ListsModule,
         TodosModule,
-        AuthModule
+        AuthModule,
     ],
     controllers: [],
     providers: [],

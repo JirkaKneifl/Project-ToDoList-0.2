@@ -4,9 +4,31 @@ import { Repository } from 'typeorm';
 import { User } from '../../../typeorm/entities/User';
 import { RegisterDto, LoginDto } from '../../dto/auth.dto';
 import * as bcrypt from 'bcrypt';
+import { UsersService } from '../../../users/services/users/users.service';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
+    constructor(private userSerrvice: UsersService, private jwtService: JwtService) {}
+
+    async validateUser(first_name: string, pass: string): Promise<any> {
+        const user = await this.userSerrvice.FindUserByName(first_name);
+        if (user && user.password === pass) {
+            const { password, ...result } = user;
+            return result;
+        } else {
+            return null;
+        }
+    }
+
+    async login(user: any) {
+        const payload = { first_name: user.first_name, sub: user.userId };
+        return {
+            access_token: this.jwtService.sign(payload),
+        };
+    }
+
+    /*
     constructor(
         @InjectRepository(User)
         private userRepository: Repository<User>,
@@ -35,4 +57,5 @@ export class AuthService {
         }
         return user;
     }
+ */
 }
