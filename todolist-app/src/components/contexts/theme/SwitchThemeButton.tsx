@@ -1,6 +1,5 @@
 import { useContext, useEffect } from 'react';
 import { ThemeContext, themeOptions } from './Theme';
-import { FormattedMessage } from 'react-intl';
 import './SwitchThemeButton.css';
 
 function SwitchThemeButton() {
