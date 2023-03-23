@@ -18,6 +18,7 @@ export class User {
   })
   last_name: string;
   @Column({
+    unique: true,
     type: 'varchar',
     length: 50,
   })

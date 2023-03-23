@@ -10,14 +10,11 @@ export class UsersService {
   ) {}
 
   async findUserByUsername(username: string): Promise<User | undefined> {
-    console.log('username', username);
     const email = username;
 
     const data = await this.userRepository.findOne({
       where: { email },
     });
-
-    console.log('data', data);
     return data;
   }
 }
