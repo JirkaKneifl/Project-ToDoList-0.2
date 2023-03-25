@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { CreateUserDto } from '../users/dto/createUser.dto';
 import { UsersService } from '../users/users.service';
+import { GoogleAuthGuard } from './guards/google-auth.guard';
 
 @Controller()
 export class AuthController {
@@ -27,5 +28,16 @@ export class AuthController {
   @Post('auth/register')
   async register(@Body() createUserDto: CreateUserDto) {
     return await this.userService.createUser(createUserDto);
+  }
+
+  @Get('auth/google')
+  @UseGuards(GoogleAuthGuard)
+  async googleAuth(@Req() req) {}
+
+  @Get('auth/google-redirect')
+  @UseGuards(GoogleAuthGuard)
+  googleAuthRedirect(@Req() req) {
+    // handle your Google response here
+    return this.authService.googleLogin(req.user);
   }
 }
