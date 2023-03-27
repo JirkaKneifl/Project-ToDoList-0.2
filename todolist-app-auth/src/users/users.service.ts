@@ -19,6 +19,15 @@ export class UsersService {
     return data;
   }
 
+  async findUserById(id: number): Promise<User | undefined> {
+    const user = await this.userRepository.findOne({
+      where: { id_user: id },
+    });
+    const userToSend = { ...user, password: undefined };
+
+    return userToSend;
+  }
+
   async createUser(createUserDto: CreateUserDto) {
     const password = EncodePassword(createUserDto.password);
     const newUser = await this.userRepository.create({
