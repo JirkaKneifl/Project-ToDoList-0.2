@@ -1,33 +1,28 @@
 import { Injectable } from '@nestjs/common';
-import {List} from "../../../typeorm/entities/List";
-import {InjectRepository} from "@nestjs/typeorm";
-import {Repository} from "typeorm";
-import {CreateListParams} from "../../types/CreateListParams.type";
-import {UpdateListParams} from "../../types/UpdateListParams.type";
-import {Todo} from "../../../typeorm/entities/Todo";
-
+import { List } from '../../../typeorm/entities/List';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { UpdateListParams } from '../../types/UpdateListParams.type';
 
 @Injectable()
 export class ListsService {
-
-    constructor(@InjectRepository(List)private listRepository: Repository<List>) {
-    }
+    constructor(@InjectRepository(List) private listRepository: Repository<List>) {}
 
     //funkce co navraci vsechny listy
-    listLists(){
+    listLists() {
         return this.listRepository.find();
     }
 
     //funkce co vraci listy se seznamem todocek
-    async findListById(id_list: number){
+    async findListById(id_list: number) {
         return await this.listRepository.findOne({
-            where: {id_list},
-            relations: ['todos']
+            where: { id_list },
+            relations: ['todos'],
         });
     }
 
     //funkce pro vytvoreni listu
-    async createList(createListDto){
+    async createList(createListDto) {
         const newList = new List();
         newList.title = createListDto.title;
         newList.description = createListDto.description;
@@ -37,9 +32,9 @@ export class ListsService {
     }
 
     //funkce pro upraveni listu
-    async updateList(id_list: number, updateListDetails: UpdateListParams){
+    async updateList(id_list: number, updateListDetails: UpdateListParams) {
         const list = await this.listRepository.findOne({
-            where: {id_list}
+            where: { id_list },
         });
         list.title = updateListDetails.title;
         list.description = updateListDetails.description;
@@ -47,7 +42,7 @@ export class ListsService {
         return await this.listRepository.save(list);
     }
 
-    async deleteList(id_list: number){
-        await this.listRepository.delete({id_list});
+    async deleteList(id_list: number) {
+        await this.listRepository.delete({ id_list });
     }
 }

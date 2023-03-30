@@ -5,9 +5,8 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/user.entity';
-import { List } from './main/entities/list.entity';
-import { Todo } from './main/entities/todo.entity';
-import { AuthService } from './auth/auth.service';
+import { List } from './profile/entities/list.entity';
+import { Todo } from './profile/entities/todo.entity';
 
 @Module({
   imports: [
