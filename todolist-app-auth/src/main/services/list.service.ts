@@ -6,16 +6,16 @@ import { UpdateListDto } from "../dto/updateList.dto";
 import { CreateListDto } from "../dto/createList.dto";
 
 @Injectable()
-export class AppService {
+export class ListService {
   constructor(
     @InjectRepository(List) private listRepository: Repository<List>
   ) {}
 
-  async findeAllLists(){
+  async findAllLists(){
     return await this.listRepository.find();
   }
 
-  async findeListById(id_list: number){
+  async findListById(id_list: number){
     return await this.listRepository.findOne({
       where: { id_list },
       relations: ['todos'],
