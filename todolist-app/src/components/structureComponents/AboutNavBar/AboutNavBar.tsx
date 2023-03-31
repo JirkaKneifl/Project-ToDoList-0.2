@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import './AboutNavBar.css';
 import HStack from '../../basicComponents/HStack';
-import SwitchLanguageButton from '../../contexts/language/SwitchLanguageButton';
 import { FormattedMessage } from 'react-intl';
 
 function AboutNavBar() {
