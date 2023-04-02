@@ -20,14 +20,14 @@ export class AuthService {
   }
 
   async login(user: any) {
-    const payload = { username: user.email, sub: user.id_user };
+    const payload = { username: user.email, id: user.id_user };
     return {
       access_token: this.jwtService.sign(payload),
     };
   }
 
   async googleLogin(user: any) {
-    const payload = { username: user.email, sub: user.id_user };
+    const payload = { username: user.email, id: user.id_user };
     console.log('payload', payload);
     console.log('user', user);
     return {

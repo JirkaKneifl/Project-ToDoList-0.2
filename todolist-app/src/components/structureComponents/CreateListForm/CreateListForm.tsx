@@ -6,21 +6,26 @@ import { useMutation } from 'react-query';
 import './CreateList.css';
 import { useNavigate } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
+import { getDecodedToken } from '../../../utils/getDecodedToken';
 
 function CreateListForm() {
+    const user = getDecodedToken(localStorage.getItem('access_token') as string);
     const navigate = useNavigate();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
 
     const createListMutation = useMutation('createList', () =>
-        fetch(`http://localhost:3001/main/createList`, {
+        fetch(`http://localhost:3001/main/${user.id}/createList`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+            },
             body: JSON.stringify({ title, description }),
         })
             .then(() => {
                 console.log('createListMutation');
-                navigate('/main');
+                navigate(`/main/${user.id}`);
             })
             .catch(),
     );

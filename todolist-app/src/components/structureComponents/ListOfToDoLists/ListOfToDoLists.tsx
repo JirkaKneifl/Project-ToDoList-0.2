@@ -7,14 +7,23 @@ import { useQuery } from 'react-query';
 import HStack from '../../basicComponents/HStack';
 import Text from '../../basicComponents/Text/Text';
 import { FormattedMessage } from 'react-intl';
+import { getDecodedToken } from '../../../utils/getDecodedToken';
 
 function ListOfLists() {
+    const user = getDecodedToken(localStorage.getItem('access_token') as string);
     const {
         data: lists,
         isLoading,
         isError,
         error,
-    } = useQuery('listLists', () => fetch('http://localhost:3001/main').then((res) => res.json()));
+    } = useQuery('listLists', () =>
+        fetch(`http://localhost:3001/main/${user.id}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+            },
+        }).then((res) => res.json()),
+    );
 
     if (isLoading) return <p>Loading</p>;
     if (isError) return <p>Error: {error as string}</p>;
@@ -50,7 +59,7 @@ function ListOfLists() {
                             return (
                                 <Link
                                     key={list.id_list}
-                                    to={`/main/${id_list}`}
+                                    to={`/main/${user.id}/${id_list}`}
                                     className={'sidebarItem'}
                                 >
                                     <Text type={'body'}>{list.title}</Text>
@@ -60,7 +69,7 @@ function ListOfLists() {
                     )}
                     <HrSeparator width={'80%'}></HrSeparator>
                     <HStack gap={1} alignItems={'center'} justifyContent={'space-around'}>
-                        <Link to={'/main/createList'}>
+                        <Link to={`/main/${user.id}/createList`}>
                             <FiPlusCircle size={32} className={'addButtonIcon'}></FiPlusCircle>
                         </Link>
                     </HStack>

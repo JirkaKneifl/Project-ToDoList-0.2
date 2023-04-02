@@ -14,10 +14,10 @@ function AboutNavBar() {
                         </Link>
                     </h2>
                     <HStack gap={4}>
-                        <Link className={'aboutNavLink'} to={'/login'}>
+                        <Link className={'aboutNavLink'} to={'/auth/login'}>
                             <FormattedMessage id={'Login'} />
                         </Link>
-                        <Link className={'aboutNavLink'} to={'/register'}>
+                        <Link className={'aboutNavLink'} to={'/auth/register'}>
                             <FormattedMessage id={'Register'} />
                         </Link>
                     </HStack>

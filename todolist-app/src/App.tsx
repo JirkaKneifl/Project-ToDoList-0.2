@@ -20,20 +20,26 @@ function App() {
         <QueryClientProvider client={queryClient}>
             <Routes>
                 <Route path="/" element={<About />} />
-                <Route path={'/login'} element={<Login />} />
+                <Route path={'/auth/login'} element={<Login />} />
                 <Route path={'/logout'} element={<Logout />} />
-                <Route path={'/register'} element={<Register />} />
+                <Route path={'/auth/register'} element={<Register />} />
                 <Route path={'/main/:idUser'} element={<Main />}></Route>
-                <Route path={'/main/:idList'} element={<MainDetailList />}></Route>
-                <Route path={'/main/:idList/listUpdate'} element={<MainUpdateList />}></Route>
-                <Route path={'/main/createList'} element={<MainCreateList />}></Route>
-                <Route path={'/main/:idList/createTodo'} element={<MainCreateTodo />}></Route>
-                <Route path={'/main/:idList/deleteList'}></Route>
+                <Route path={'/main/:idUser/:idList'} element={<MainDetailList />}></Route>
                 <Route
-                    path={'/main/:idList/updateTodo/:idTodo'}
+                    path={'/main/:idUser/:idList/listUpdate'}
+                    element={<MainUpdateList />}
+                ></Route>
+                <Route path={'/main/:idUser/createList'} element={<MainCreateList />}></Route>
+                <Route
+                    path={'/main/:idUser/:idList/createTodo'}
+                    element={<MainCreateTodo />}
+                ></Route>
+                <Route path={'/main/:idUser/:idList/deleteList'}></Route>
+                <Route
+                    path={'/main/:idUser/:idList/updateTodo/:idTodo'}
                     element={<MainUpdateTodo></MainUpdateTodo>}
                 ></Route>
-                <Route path={'/main/settings'} element={<Settings></Settings>}></Route>
+                <Route path={'/main/:idUser/settings'} element={<Settings></Settings>}></Route>
             </Routes>
         </QueryClientProvider>
     );

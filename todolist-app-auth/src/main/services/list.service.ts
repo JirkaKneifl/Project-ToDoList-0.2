@@ -14,12 +14,8 @@ export class ListService {
   ) {}
 
   async findAllLists(id_user: number) {
-    const user = await this.userRepository.findOne({
-      where: { id_user },
-    });
-
     return await this.listRepository.find({
-      where: { user },
+      where: { user: { id_user } },
     });
   }
 
@@ -30,10 +26,13 @@ export class ListService {
     });
   }
 
-  async createList(createListDto: CreateListDto) {
+  async createList(createListDto: CreateListDto, id_user: number) {
     const newList = new List();
     newList.title = createListDto.title;
     newList.description = createListDto.description;
+    newList.user = await this.userRepository.findOne({
+      where: { id_user },
+    });
     //newList.archivated_at = new Date(); -> potrebuje dodelat kdy bude archyvovano
 
     return await this.listRepository.save(newList);
