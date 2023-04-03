@@ -80,7 +80,7 @@ function LoginForm() {
                                 type={'small-body'}
                                 children={<FormattedMessage id={'label.question.login'} />}
                             ></Text>
-                            <Link to={'/register'} className={'link'}>
+                            <Link to={'/auth/register'} className={'link'}>
                                 <FormattedMessage id={'Register'} />
                             </Link>
                         </HStack>

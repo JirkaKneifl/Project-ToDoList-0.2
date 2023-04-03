@@ -111,7 +111,7 @@ function RegisterForm() {
                                 type={'small-body'}
                                 children={<FormattedMessage id={'label.question.register'} />}
                             ></Text>
-                            <Link to={'/login'} className={'link'}>
+                            <Link to={'/auth/login'} className={'link'}>
                                 <FormattedMessage id={'Login'} />
                             </Link>
                         </HStack>
