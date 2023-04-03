@@ -7,6 +7,8 @@ import { getDecodedToken } from '../../../utils/getDecodedToken';
 
 function AboutNavBar() {
     const user = getDecodedToken(localStorage.getItem('access_token') as string);
+
+    const handleLogOut = () => {};
     return (
         <>
             <div className={'aboutNavBar'}>
@@ -23,7 +25,7 @@ function AboutNavBar() {
                         <Link className={'navLink'} to={`/main/${user.id}/settings`}>
                             <FiSettings className={'navLinkIcon'}></FiSettings>
                         </Link>
-                        <Link className={'navLink'} to={'/'}>
+                        <Link className={'navLink'} to={'/'} onClick={handleLogOut}>
                             <FiLogOut className={'navLinkIcon'}></FiLogOut>
                         </Link>
                     </HStack>
