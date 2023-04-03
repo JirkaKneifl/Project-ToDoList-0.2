@@ -1,8 +1,8 @@
 import Text from '../../basicComponents/Text/Text';
 import HStack from '../../basicComponents/HStack';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { useMutation, useQuery } from 'react-query';
-import { FormEvent, useState } from 'react';
+import { useQuery } from 'react-query';
+import { useState } from 'react';
 import VStack from '../../basicComponents/VStack';
 import ToDo from '../ToDo/ToDo';
 import { FiEdit, FiPlusCircle, FiTrash } from 'react-icons/fi';
@@ -49,7 +49,7 @@ function DescriptionBodyOfTodoLists() {
                         <Text type={'title'} children={title}></Text>
                         <HStack gap={8}>
                             <button className={'onlyIconButton'}>
-                                <Link to={`/main/${idList}/listUpdate`}>
+                                <Link to={`/main/${user.id}/${idList}/listUpdate`}>
                                     <FiEdit size={32} className={'listUpdateEditIcon'} />
                                 </Link>
                             </button>
