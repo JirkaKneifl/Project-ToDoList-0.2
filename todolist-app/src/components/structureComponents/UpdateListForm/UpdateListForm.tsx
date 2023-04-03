@@ -42,7 +42,7 @@ function UpdateListForm() {
         })
             .then(() => {
                 console.log('updateListMutation');
-                navigate(`/main/${idList}`);
+                navigate(`/main/${user.id}/${idList}`);
             })
             .catch(),
     );
