@@ -27,11 +27,12 @@ export class MainController {
     private todoService: TodoService,
   ) {}
 
-  @Get('/') //----------------------> testovaci routa
+  @Get('/')
   async findAllList(@Param('idUser') idUser: string) {
     return await this.listService.findAllLists(Number(idUser));
   }
 
+  //--------------------LIST--------------------
   @Post('/createList')
   async CreateList(
     @Param('idUser') idUser: string,
@@ -48,7 +49,10 @@ export class MainController {
   }
 
   @Get('/:idList/listUpdate')
-  async GetListData(@Param('idList') idList: string) {
+  async GetListData(
+    @Param('idList') idList: string,
+    @Param('idUser') idUser: string,
+  ) {
     return await this.listService.findListById(Number(idList));
   }
 
@@ -65,6 +69,7 @@ export class MainController {
     return await this.listService.deleteList(Number(idList));
   }
 
+  //--------------------TODO--------------------
   @Post('/:idList/createTodo')
   async CreateTodo(
     @Param('idList') idList: string,

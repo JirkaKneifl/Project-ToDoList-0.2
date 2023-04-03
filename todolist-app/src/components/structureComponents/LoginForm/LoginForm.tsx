@@ -8,6 +8,7 @@ import { FormattedMessage } from 'react-intl';
 import { useMutation } from 'react-query';
 import { FormEvent } from 'react';
 import { getDecodedToken } from '../../../utils/getDecodedToken';
+import { GoogleLogin } from '@react-oauth/google';
 
 function LoginForm() {
     const navigate = useNavigate();
@@ -74,6 +75,14 @@ function LoginForm() {
                             <button type={'submit'}>
                                 <FormattedMessage id={'Login'} />
                             </button>
+                            <GoogleLogin
+                                onSuccess={(credentialResponse) => {
+                                    console.log(credentialResponse);
+                                }}
+                                onError={() => {
+                                    console.log('Google login failed');
+                                }}
+                            />
                         </VStack>
                         <HStack gap={1} alignItems={'baseline'}>
                             <Text

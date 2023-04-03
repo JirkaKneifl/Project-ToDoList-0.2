@@ -3,7 +3,6 @@ import './ToDo.css';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FiTrash, FiEdit } from 'react-icons/fi';
 import Text from '../../basicComponents/Text/Text';
-import { getDecodedToken } from '../../../utils/getDecodedToken';
 
 type toDoProps = {
     toDoLabel: string;
@@ -12,8 +11,6 @@ type toDoProps = {
 };
 
 function ToDo(props: toDoProps) {
-    const user = getDecodedToken(localStorage.getItem('access_token') as string);
-    const userId = user.id;
     const { idList } = useParams();
     const navigate = useNavigate();
 
@@ -28,7 +25,7 @@ function ToDo(props: toDoProps) {
                     <HStack gap={4}>
                         {/*<Button label={"Archvate"}></Button> -> archvovabni na posledy*/}
                         <button className={'onlyIconButton'}>
-                            <Link to={`/main/${userId}/${idList}/updateTodo/${props.idTodo}`}>
+                            <Link to={`/main/${props.userId}/${idList}/updateTodo/${props.idTodo}`}>
                                 <FiEdit size={28} className={'editTodoIcon'} />
                             </Link>
                         </button>
@@ -36,7 +33,7 @@ function ToDo(props: toDoProps) {
                             className={'onlyIconButton'}
                             onClick={(e) => {
                                 fetch(
-                                    `http://localhost:3001/main/${userId}/${idList}/deleteTodo/${props.idTodo}`,
+                                    `http://localhost:3001/main/${props.userId}/${idList}/deleteTodo/${props.idTodo}`,
                                     {
                                         method: 'DELETE',
                                         headers: {

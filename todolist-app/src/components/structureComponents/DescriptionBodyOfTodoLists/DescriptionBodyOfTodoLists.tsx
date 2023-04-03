@@ -100,6 +100,7 @@ function DescriptionBodyOfTodoLists() {
                                 key={todo.id_todo}
                                 toDoLabel={todo.title}
                                 idTodo={todo.id_todo}
+                                userId={user.id}
                             ></ToDo>
                         );
                     })
