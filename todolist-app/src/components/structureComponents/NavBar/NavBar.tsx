@@ -20,7 +20,7 @@ function AboutNavBar() {
                         <Link to={`/profile/${user.id}`} className={'navLink'}>
                             <Text type={'body'}>{user.username}</Text>
                         </Link>
-                        <Link className={'navLink'} to={'/main/settings'}>
+                        <Link className={'navLink'} to={`/main/${user.id}/settings`}>
                             <FiSettings className={'navLinkIcon'}></FiSettings>
                         </Link>
                         <Link className={'navLink'} to={'/'}>
