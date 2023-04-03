@@ -1,26 +1,31 @@
 import { FormEvent, useState } from 'react';
 import { useMutation } from 'react-query';
-import { redirect, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import VStack from '../../basicComponents/VStack';
 import Text from '../../basicComponents/Text/Text';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
+import { getDecodedToken } from '../../../utils/getDecodedToken';
 
 function CreateTodoForm() {
+    const user = getDecodedToken(localStorage.getItem('access_token') as string);
     const navigate = useNavigate();
     const { idList } = useParams();
     const [title, setTitle] = useState('');
 
     const createTodoMutation = useMutation('createTodo', () =>
-        fetch(`http://localhost:3001/main/${idList}/createTodo`, {
+        fetch(`http://localhost:3001/main/${user.id}/${idList}/createTodo`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+            },
             body: JSON.stringify({ title }),
         })
             .then(() => {
                 console.log('createListMutation');
-                navigate(`/main/${idList}`);
+                navigate(`/main/${user.id}/${idList}`);
             })
             .catch(),
     );
