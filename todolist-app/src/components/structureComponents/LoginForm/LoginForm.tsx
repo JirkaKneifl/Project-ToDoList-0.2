@@ -81,6 +81,7 @@ function LoginForm() {
                                     const access_token = credentialResponse.credential as string;
                                     const decoded = jwtDecode(access_token);
                                     console.log(decoded);
+                                    //zde musim poslat token na backend a tam ho zpracovat
                                 }}
                                 onError={() => {
                                     console.log('Google login failed');
