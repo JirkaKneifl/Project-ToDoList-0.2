@@ -9,6 +9,7 @@ import { useMutation } from 'react-query';
 import { FormEvent } from 'react';
 import { getDecodedToken } from '../../../utils/getDecodedToken';
 import { GoogleLogin } from '@react-oauth/google';
+import jwtDecode from 'jwt-decode';
 
 function LoginForm() {
     const navigate = useNavigate();
@@ -77,6 +78,7 @@ function LoginForm() {
                             </button>
                             <GoogleLogin
                                 onSuccess={(credentialResponse) => {
+                                    const user = jwtDecode(credentialResponse.credential);
                                     console.log(credentialResponse);
                                 }}
                                 onError={() => {

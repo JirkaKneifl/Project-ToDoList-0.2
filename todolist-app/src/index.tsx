@@ -6,7 +6,7 @@ import LanguageProvider from './components/contexts/language/Language';
 import ThemeProvider from './components/contexts/theme/Theme';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
-const clientId = process.env.GOOGLE_CLIENT_ID;
+const clientId = '214225127993-gdge2v3ad1da01k1qd9aqnft1phgu0pn.apps.googleusercontent.com' || '';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
