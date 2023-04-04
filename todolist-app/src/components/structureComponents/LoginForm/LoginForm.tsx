@@ -78,8 +78,9 @@ function LoginForm() {
                             </button>
                             <GoogleLogin
                                 onSuccess={(credentialResponse) => {
-                                    //const user: string | undefined = jwtDecode(credentialResponse);
-                                    console.log(credentialResponse);
+                                    const access_token = credentialResponse.credential as string;
+                                    const decoded = jwtDecode(access_token);
+                                    console.log(decoded);
                                 }}
                                 onError={() => {
                                     console.log('Google login failed');
