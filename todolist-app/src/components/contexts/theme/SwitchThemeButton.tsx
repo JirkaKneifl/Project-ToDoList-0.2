@@ -1,21 +1,9 @@
 import { useContext, useEffect } from 'react';
-import { ThemeContext, themeOptions } from './Theme';
+import { ThemeContext, themeOptions, Theme } from './Theme';
 import './SwitchThemeButton.css';
 
 function SwitchThemeButton() {
     const { theme, setTheme } = useContext(ThemeContext);
-
-    useEffect(() => {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme && Object.keys(themeOptions).includes(savedTheme)) {
-            setTheme(savedTheme);
-        }
-    }, []);
-
-    const handleThemeChange = (newTheme: string) => {
-        setTheme(newTheme);
-        localStorage.setItem('theme', newTheme);
-    };
 
     return (
         <>
@@ -23,7 +11,7 @@ function SwitchThemeButton() {
                 <button
                     key={key}
                     style={{ backgroundColor: color }}
-                    onClick={() => handleThemeChange(key)}
+                    onClick={() => setTheme(key as Theme)}
                     disabled={theme === key}
                     className={'color-button'}
                 ></button>

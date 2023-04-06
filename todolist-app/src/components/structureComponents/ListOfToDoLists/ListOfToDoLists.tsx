@@ -1,6 +1,6 @@
 import VStack from '../../basicComponents/VStack';
 import './ListOfToDoLists.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FiPlusCircle } from 'react-icons/fi';
 import HrSeparator from '../../basicComponents/HrSeparator/HrSeparator';
 import { useQuery } from 'react-query';
@@ -11,6 +11,7 @@ import { getDecodedToken } from '../../../utils/getDecodedToken';
 
 function ListOfLists() {
     const user = getDecodedToken(localStorage.getItem('access_token') as string);
+    const navigate = useNavigate();
     const {
         data: lists,
         isLoading,
@@ -22,7 +23,9 @@ function ListOfLists() {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${localStorage.getItem('access_token')}`,
             },
-        }).then((res) => res.json()),
+        })
+            .then((res) => (res.status === 401 ? navigate('/auth/login') : res))
+            .then((res) => res!.json()),
     );
 
     if (isLoading) return <p>Loading</p>;
