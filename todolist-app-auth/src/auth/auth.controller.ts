@@ -33,12 +33,12 @@ export class AuthController {
     return await this.userService.createUser(createUserDto);
   }
 
-  @Get('auth/google')
   @UseGuards(GoogleAuthGuard)
+  @Get('auth/google')
   async googleAuth(@Req() req) {}
 
-  @Get('auth/google-redirect')
   @UseGuards(GoogleAuthGuard)
+  @Get('auth/google-redirect')
   googleAuthRedirect(@Req() req) {
     // handle your Google response here
     return this.authService.googleLogin(req.user);
