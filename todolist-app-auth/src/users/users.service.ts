@@ -36,4 +36,14 @@ export class UsersService {
     });
     return await this.userRepository.save(newUser);
   }
+
+  async createUserFromGoogle(
+    first_name: string,
+    last_name: string,
+    email: string,
+    picture: string,
+  ): Promise<User> {
+    const newUser = new User(first_name, last_name, email, picture);
+    return await this.userRepository.save(newUser);
+  }
 }

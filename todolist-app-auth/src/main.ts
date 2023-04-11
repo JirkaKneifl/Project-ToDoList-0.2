@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import * as session from "express-session";
+import * as session from 'express-session';
 const cors = require('cors');
 
 async function bootstrap() {
@@ -13,6 +13,11 @@ async function bootstrap() {
       saveUninitialized: false,
     }),
   );
+
+  //enable cors
+  app.enableCors({
+    origin: 'http://localhost:3000',
+  });
 
   app.use(cors());
 

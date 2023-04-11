@@ -1,13 +1,18 @@
 import { Link, useNavigate } from 'react-router-dom';
-import './NavBar.css';
+import './NavBarProgress.css';
 import HStack from '../../basicComponents/HStack';
 import { FiLogOut, FiSettings } from 'react-icons/fi';
 import Text from '../../basicComponents/Text/Text';
 import { getDecodedToken } from '../../../utils/getDecodedToken';
+import ProgresBar from '../../basicComponents/progres-bar';
+import { useEffect, useState } from 'react';
 
-function AboutNavBar() {
+function NavBarProgres() {
     const navigate = useNavigate();
     const user = getDecodedToken(localStorage.getItem('access_token') as string);
+    const [completed, setCompleted] = useState(0);
+
+    useEffect(() => {}, []);
 
     const handleLogOut = () => {
         localStorage.removeItem('access_token');
@@ -24,6 +29,7 @@ function AboutNavBar() {
                         </Link>
                     </h2>
                     <HStack gap={4} alignItems={'baseline'}>
+                        <ProgresBar completed={completed}></ProgresBar>
                         <Link to={`/profile/${user.id}`} className={'navLink'}>
                             <Text type={'body'}>{user.username}</Text>
                         </Link>
@@ -40,4 +46,4 @@ function AboutNavBar() {
     );
 }
 
-export default AboutNavBar;
+export default NavBarProgres;

@@ -27,9 +27,8 @@ export class AuthService {
   }
 
   async googleLogin(user: any) {
-    const payload = { username: user.email, id: user.id_user };
-    console.log('payload', payload);
-    console.log('user', user);
+    const dbuser = await this.userService.findUserByUsername(user.email);
+    const payload = { username: user.email, id: dbuser.id_user };
     return {
       access_token: this.jwtService.sign(payload),
     };

@@ -1,10 +1,20 @@
-import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Redirect,
+  Req,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { CreateUserDto } from '../users/dto/createUser.dto';
 import { UsersService } from '../users/users.service';
 import { GoogleAuthGuard } from './guards/google-auth.guard';
+import jwtDecode from 'jwt-decode';
 
 @Controller()
 export class AuthController {
@@ -39,8 +49,40 @@ export class AuthController {
 
   @UseGuards(GoogleAuthGuard)
   @Get('auth/google-redirect')
-  googleAuthRedirect(@Req() req) {
-    // handle your Google response here
-    return this.authService.googleLogin(req.user);
+  async googleAuthRedirect(@Req() req, @Res() res) {
+    let user = await this.userService.findUserByUsername(req.user.email);
+    if (!user) {
+      const createdUserData = await this.userService.createUserFromGoogle(
+        req.user.firstName,
+        req.user.lastName,
+        req.user.email,
+        req.user.picture,
+      );
+      console.log('createdUserData', createdUserData);
+    }
+    user = await this.userService.findUserByUsername(req.user.email);
+    const accessToken = await this.authService.googleLogin(user);
+
+    console.log(jwtDecode(accessToken.access_token));
+    console.log('accessToken', accessToken);
+    console.log('USER', user);
+
+    res.header('Authorization', `Bearer ${accessToken.access_token}`);
+    res.header('Content-Type', 'application/json');
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.redirect(`http://localhost:3001/main/${user.id_user}`);
+
+    /*interface DecodedData {
+      username: string;
+      id: number;
+    }
+
+    const token = await this.authService.googleLogin(req.user);
+    const decodedData = jwtDecode(token.access_token) as DecodedData;
+    console.log('decodedData', decodedData);
+    localStorage.setItem('token', token.access_token);
+
+    res.header('Authorization', `Bearer ${token.access_token}`);
+    return await res.redirect(`http://localhost:3000/main/${decodedData.id}`);*/
   }
 }

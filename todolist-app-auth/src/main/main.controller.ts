@@ -18,8 +18,8 @@ import { UpdateListDto } from './dto/updateList.dto';
 import { CreateTodoDto } from './dto/createTodo.dto';
 import { UpdateTodoDto } from './dto/updateTodo.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { GoogleAuthGuard } from '../auth/guards/google-auth.guard';
 
-@UseGuards(JwtAuthGuard)
 @Controller('main/:idUser')
 export class MainController {
   constructor(
@@ -27,6 +27,7 @@ export class MainController {
     private todoService: TodoService,
   ) {}
 
+  @UseGuards(JwtAuthGuard)
   @Get('/')
   async findAllList(@Param('idUser') idUser: string) {
     return await this.listService.findAllLists(Number(idUser));

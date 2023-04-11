@@ -78,16 +78,18 @@ function LoginForm() {
                             </button>
                             <GoogleLogin
                                 onSuccess={(credentialResponse) => {
+                                    console.log(credentialResponse);
                                     const access_token = credentialResponse.credential as string;
                                     const decoded = jwtDecode(access_token);
                                     console.log(decoded);
 
                                     //zde musim poslat token na backend a tam ho zpracovat
-                                    fetch('http://localhost:3001/auth/google', {
-                                        method: 'GET',
+                                    fetch('http://localhost:3001/auth/google-redirect', {
+                                        method: 'POST',
                                         headers: {
                                             'Content-Type': 'application/json',
                                             Authorization: `Bearer ${credentialResponse.credential}`,
+                                            'Access-Control-Allow-Origin': 'http://localhost:3000',
                                         },
                                         body: JSON.stringify({
                                             access_token: credentialResponse.credential,

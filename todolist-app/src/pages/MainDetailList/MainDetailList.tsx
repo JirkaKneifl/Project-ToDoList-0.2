@@ -1,16 +1,15 @@
-import Layout from "../../components/structureComponents/Layout/Layout";
-import DescriptionBodyOfTodoLists
-    from "../../components/structureComponents/DescriptionBodyOfTodoLists/DescriptionBodyOfTodoLists";
-import "./MainDetailList.css";
+import DescriptionBodyOfTodoLists from '../../components/structureComponents/DescriptionBodyOfTodoLists/DescriptionBodyOfTodoLists';
+import './MainDetailList.css';
+import LayoutProgress from '../../components/structureComponents/LayoutProgress/LayoutProgress';
 
-function MainDetailList(){
+function MainDetailList() {
     return (
         <>
-            <Layout>
-                <div className={"detailList"}>
+            <LayoutProgress>
+                <div className={'detailList'}>
                     <DescriptionBodyOfTodoLists></DescriptionBodyOfTodoLists>
                 </div>
-            </Layout>
+            </LayoutProgress>
         </>
     );
 }
