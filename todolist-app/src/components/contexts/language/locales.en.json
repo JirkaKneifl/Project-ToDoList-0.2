@@ -32,5 +32,6 @@
   "label.switchLanguage": "Switch language into Czech",
   "title.settings": "Settings",
   "small-body.settings": "The application is set to English.",
-  "body.color.settings": "Color options:"
+  "body.color.settings": "Color options:",
+  "link.login.google": "Continue with Google"
 }

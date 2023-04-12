@@ -32,5 +32,6 @@
   "label.switchLanguage": "Přepni jazyk do Angličtiny",
   "title.settings": "Nastavení",
   "small-body.settings": "Aplikace je nastavena do češtiny.",
-  "body.color.settings": "Barevné možnosti:"
+  "body.color.settings": "Barevné možnosti:",
+  "link.login.google": "Pokračuj na Google"
 }

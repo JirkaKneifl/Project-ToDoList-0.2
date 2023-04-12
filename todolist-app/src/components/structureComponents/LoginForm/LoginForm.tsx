@@ -8,8 +8,7 @@ import { FormattedMessage } from 'react-intl';
 import { useMutation } from 'react-query';
 import { FormEvent } from 'react';
 import { getDecodedToken } from '../../../utils/getDecodedToken';
-import { GoogleLogin } from '@react-oauth/google';
-import jwtDecode from 'jwt-decode';
+import { FcGoogle } from 'react-icons/fc';
 
 function LoginForm() {
     const navigate = useNavigate();
@@ -76,31 +75,16 @@ function LoginForm() {
                             <button type={'submit'}>
                                 <FormattedMessage id={'Login'} />
                             </button>
-                            <GoogleLogin
-                                onSuccess={(credentialResponse) => {
-                                    console.log(credentialResponse);
-                                    const access_token = credentialResponse.credential as string;
-                                    const decoded = jwtDecode(access_token);
-                                    console.log(decoded);
-
-                                    //zde musim poslat token na backend a tam ho zpracovat
-                                    fetch('http://localhost:3001/auth/google-redirect', {
-                                        method: 'POST',
-                                        headers: {
-                                            'Content-Type': 'application/json',
-                                            Authorization: `Bearer ${credentialResponse.credential}`,
-                                            'Access-Control-Allow-Origin': 'http://localhost:3000',
-                                        },
-                                        body: JSON.stringify({
-                                            access_token: credentialResponse.credential,
-                                        }),
-                                    }).then((res) => res.json());
-                                }}
-                                onError={() => {
-                                    console.log('Google login failed');
-                                }}
-                            />
                         </VStack>
+                        <a href={'http://localhost:3001/auth/google'} className="linkGoogle">
+                            <HStack gap={2} justifyContent="center">
+                                <FcGoogle className="googleIcon" size="24px"></FcGoogle>
+                                <Text
+                                    type="body"
+                                    children={<FormattedMessage id={'link.login.google'} />}
+                                ></Text>
+                            </HStack>
+                        </a>
                         <HStack gap={1} alignItems={'baseline'}>
                             <Text
                                 type={'small-body'}
