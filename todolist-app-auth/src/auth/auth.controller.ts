@@ -50,6 +50,8 @@ export class AuthController {
   @UseGuards(GoogleAuthGuard)
   @Get('auth/google-redirect')
   async googleAuthRedirect(@Req() req, @Res() res) {
+    console.log('req.user', req.user);
+
     let user = await this.userService.findUserByUsername(req.user.email);
     if (!user) {
       const createdUserData = await this.userService.createUserFromGoogle(
@@ -67,22 +69,15 @@ export class AuthController {
     console.log('accessToken', accessToken);
     console.log('USER', user);
 
-    res.header('Authorization', `Bearer ${accessToken.access_token}`);
+    res.cookie('jwt', accessToken.access_token, {
+      httpOnly: false,
+      secure: false,
+      maxAge: 100000,
+      sameSite: false,
+      sameOrigin: false,
+    });
     res.header('Content-Type', 'application/json');
     res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.redirect(`http://localhost:3001/main/${user.id_user}`);
-
-    /*interface DecodedData {
-      username: string;
-      id: number;
-    }
-
-    const token = await this.authService.googleLogin(req.user);
-    const decodedData = jwtDecode(token.access_token) as DecodedData;
-    console.log('decodedData', decodedData);
-    localStorage.setItem('token', token.access_token);
-
-    res.header('Authorization', `Bearer ${token.access_token}`);
-    return await res.redirect(`http://localhost:3000/main/${decodedData.id}`);*/
+    res.redirect(`http://localhost:3000/googleRedirect/${user.id_user}`);
   }
 }

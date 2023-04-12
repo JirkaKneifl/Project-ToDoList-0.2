@@ -105,4 +105,9 @@ export class MainController {
   async DeleteTodo(@Param('idTodo') idTodo: string) {
     return await this.todoService.deleteTodo(Number(idTodo));
   }
+
+  /*@Post('/:idList/checked/:idTodo')
+  async CheckedTodo(@Param('idTodo') idTodo: string) {
+    return await this.todoService.checkedTodo(Number(idTodo));
+  }*/
 }

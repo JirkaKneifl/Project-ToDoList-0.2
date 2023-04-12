@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FiTrash, FiEdit } from 'react-icons/fi';
 import Text from '../../basicComponents/Text/Text';
 import { useMutation } from 'react-query';
+import { useState } from 'react';
 
 type toDoProps = {
     toDoLabel: string;
@@ -12,24 +13,27 @@ type toDoProps = {
 };
 
 function ToDo(props: toDoProps) {
-    const { idList, idTodo } = useParams();
+    const { idList } = useParams();
     const navigate = useNavigate();
+    const [checked, setChecked] = useState(false);
+
+    const checkedMutation = useMutation(['checked', idList, props.idTodo], () =>
+        fetch(`http://localhost:3001/main/${props.userId}/${idList}/checked/${props.idTodo}`, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+            },
+            body: JSON.stringify({ is_done: checked }),
+        }).then((res) => res.json()),
+    );
 
     const handleOnChange = (e: any) => {
         if (e.target.checked) {
-            useMutation(['checked', idList], () =>
-                fetch(`http://localhost:3001/main/${props.userId}/${idList}/checked/${idTodo}`, {
-                    method: 'PUT',
-                    headers: {},
-                }),
-            );
-        } else {
-            localStorage.setItem(
-                'checked',
-                (Number(localStorage.getItem('checked')) - 1).toString(),
-            );
+            setChecked(true);
+            checkedMutation.mutate();
         }
-        console.log(localStorage.getItem('checked'));
+        setChecked(false);
+        checkedMutation.mutate();
     };
 
     return (

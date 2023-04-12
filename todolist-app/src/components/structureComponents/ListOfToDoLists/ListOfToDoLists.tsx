@@ -34,7 +34,7 @@ function ListOfLists() {
     return (
         <>
             <div className={'listOfToDoListsPanel'}>
-                <HrSeparator width={'80%'}></HrSeparator>
+                <HrSeparator width={'80%'} />
                 <VStack alignItems={'stretch'} justifyContent={'center'} gap={2}>
                     {!lists.length ? (
                         <HStack gap={16} justifyContent={'center'}>
@@ -57,7 +57,6 @@ function ListOfLists() {
                         </HStack>
                     ) : (
                         lists?.map((list: any) => {
-                            console.log('jsme v listoftodos', list);
                             const id_list: number = list.id_list;
                             return (
                                 <Link

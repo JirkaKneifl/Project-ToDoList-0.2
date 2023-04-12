@@ -12,6 +12,7 @@ import MainCreateList from './pages/MainCerateList/MineCreateList';
 import MainCreateTodo from './pages/MainCreateTodo/MainCreateTodo';
 import MainUpdateTodo from './pages/MainUpdateTodo/MainUpdateTodo';
 import Settings from './pages/MainSettings/Settings';
+import GoogleRedirect from './pages/googleRedirect/googleRedirect';
 
 function App() {
     const queryClient = new QueryClient();
@@ -40,6 +41,10 @@ function App() {
                     element={<MainUpdateTodo></MainUpdateTodo>}
                 ></Route>
                 <Route path={'/main/:idUser/settings'} element={<Settings></Settings>}></Route>
+                <Route
+                    path={'/googleRedirect/:idUser'}
+                    element={<GoogleRedirect></GoogleRedirect>}
+                ></Route>
             </Routes>
         </QueryClientProvider>
     );
