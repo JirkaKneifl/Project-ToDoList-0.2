@@ -3,6 +3,7 @@ import './ToDo.css';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FiTrash, FiEdit } from 'react-icons/fi';
 import Text from '../../basicComponents/Text/Text';
+import { useMutation } from 'react-query';
 
 type toDoProps = {
     toDoLabel: string;
@@ -11,15 +12,32 @@ type toDoProps = {
 };
 
 function ToDo(props: toDoProps) {
-    const { idList } = useParams();
+    const { idList, idTodo } = useParams();
     const navigate = useNavigate();
+
+    const handleOnChange = (e: any) => {
+        if (e.target.checked) {
+            useMutation(['checked', idList], () =>
+                fetch(`http://localhost:3001/main/${props.userId}/${idList}/checked/${idTodo}`, {
+                    method: 'PUT',
+                    headers: {},
+                }),
+            );
+        } else {
+            localStorage.setItem(
+                'checked',
+                (Number(localStorage.getItem('checked')) - 1).toString(),
+            );
+        }
+        console.log(localStorage.getItem('checked'));
+    };
 
     return (
         <>
             <div className={'todoBody'}>
                 <HStack gap={8} justifyContent={'space-between'} alignItems={'center'}>
                     <HStack gap={4} justifyContent={'center'} alignItems={'center'}>
-                        <input type="checkbox" />
+                        <input type="checkbox" onChange={handleOnChange} />
                         <Text type={'body'}>{props.toDoLabel}</Text>
                     </HStack>
                     <HStack gap={4}>

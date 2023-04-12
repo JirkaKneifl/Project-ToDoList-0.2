@@ -33,8 +33,7 @@ export class Todo {
   created_at: Date = new Date();
 
   @Column({
-    type: 'tinyint',
-    width: 1,
+    type: 'boolean',
   })
   is_done;
 
