@@ -5,6 +5,7 @@ import { FiTrash, FiEdit } from 'react-icons/fi';
 import Text from '../../basicComponents/Text/Text';
 import { useMutation } from 'react-query';
 import { useState } from 'react';
+import { BiCheck } from 'react-icons/bi';
 
 type toDoProps = {
     toDoLabel: string;
@@ -41,7 +42,7 @@ function ToDo(props: toDoProps) {
             <div className={'todoBody'}>
                 <HStack gap={8} justifyContent={'space-between'} alignItems={'center'}>
                     <HStack gap={4} justifyContent={'center'} alignItems={'center'}>
-                        <input type="checkbox" onChange={handleOnChange} />
+                        <input type="checkbox" onChange={handleOnChange}></input>
                         <Text type={'body'}>{props.toDoLabel}</Text>
                     </HStack>
                     <HStack gap={4}>

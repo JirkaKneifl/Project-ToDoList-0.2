@@ -30,17 +30,44 @@
     background-color: transparent;
     border: none;
 }
+/* Hide default checkbox appearance */
 input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
-    height: 28px;
-    width: 28px;
-    background-color: white;
-    border-color: #67AB47;
-    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+    background-color: #ffffff;
+    border: 2px solid #555555;
+    border-radius: 25%;
     cursor: pointer;
+    outline: none;
+    position: relative;
 }
 
-input[type="checkbox"]:checked {
-    background-color: #67AB47;
+/* Checkbox hover state */
+input[type="checkbox"]:hover {
+    background-color: #eaeaea;
+}
+
+/* Checkbox checked state */
+input[type="checkbox"]:checked::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 50%;
+}
+
+/* Checkmark icon */
+input[type="checkbox"]:checked::after {
+    content: "\2713";
+    color: var(--primary-color);
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

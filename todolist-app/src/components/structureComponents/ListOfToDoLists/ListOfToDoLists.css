@@ -20,7 +20,7 @@
 
 }
 .sidebarItem:hover{
-    color: #67AB47;
+    color: var(--primary-color);
     background-color: #eaeaea;
 }
 hr{
@@ -34,5 +34,5 @@ hr{
     color: #555555;
 }
 .addButtonIcon:hover{
-    color: #67AB47;
+    color: var(--primary-color);
 }
