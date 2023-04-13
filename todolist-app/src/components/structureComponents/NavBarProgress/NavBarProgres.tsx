@@ -46,7 +46,7 @@ function NavBarProgres() {
     return (
         <>
             <div className={'aboutNavBar'}>
-                <HStack alignItems={'baseline'} gap={295}>
+                <HStack alignItems={'baseline'} gap={235}>
                     <h2>
                         <Link to={`/main/${user.id}`} className={'toDoLogo'}>
                             ToDo App
