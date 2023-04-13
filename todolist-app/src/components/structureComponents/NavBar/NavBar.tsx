@@ -17,7 +17,7 @@ function AboutNavBar() {
     return (
         <>
             <div className={'aboutNavBar'}>
-                <HStack alignItems={'baseline'} gap={300}>
+                <HStack alignItems={'baseline'} gap={360}>
                     <h2>
                         <Link to={`/main/${user.id}`} className={'toDoLogo'}>
                             ToDo App
