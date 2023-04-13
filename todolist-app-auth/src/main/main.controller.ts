@@ -106,8 +106,26 @@ export class MainController {
     return await this.todoService.deleteTodo(Number(idTodo));
   }
 
-  /*@Post('/:idList/checked/:idTodo')
-  async CheckedTodo(@Param('idTodo') idTodo: string) {
-    return await this.todoService.checkedTodo(Number(idTodo));
-  }*/
+  @Post('/:idList/checked/:idTodo')
+  async CheckTodo(
+    @Param('idTodo') idTodo: string,
+    @Body('is_done') is_done: boolean,
+  ) {
+    return await this.todoService.checkTodo(Number(idTodo), is_done);
+  }
+
+  @Get('/:idList/checked/:idTodo')
+  async GetCheckTodo(@Param('idTodo') idTodo: string) {
+    return await this.todoService.findTodoById(Number(idTodo));
+  }
+
+  @Get('/:idList/countCompletedTodos')
+  async CountCompletedTodos(@Param('idList') idList: number) {
+    return await this.todoService.countCompletedTodos(idList);
+  }
+
+  @Get('/:idList/countTodos')
+  async CountTodos(@Param('idList') idList: number) {
+    return await this.todoService.findeAllTodosByIdList(idList);
+  }
 }

@@ -34,6 +34,7 @@ export class Todo {
 
   @Column({
     type: 'boolean',
+    default: false,
   })
   is_done;
 
