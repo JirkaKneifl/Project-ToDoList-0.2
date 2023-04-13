@@ -6,43 +6,49 @@ import Text from '../../basicComponents/Text/Text';
 import { getDecodedToken } from '../../../utils/getDecodedToken';
 import ProgresBar from '../../basicComponents/progres-bar';
 import { useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
 
 function NavBarProgres() {
     const navigate = useNavigate();
     const user = getDecodedToken(localStorage.getItem('access_token') as string);
-    const [completed, setCompleted] = useState(0);
-    const { idList } = useParams();
 
-    const {
-        data: list,
-        isLoading,
-        isError,
-        error,
-    } = useQuery(
-        ['descriptionOfList', idList],
-        () =>
-            fetch(`http://localhost:3001/main/${user.id}/${idList}`, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                },
-            }).then((res) => res.json()),
-        {
-            onSuccess: (list) => {
-                console.log('pocet listu:', list.todos.length);
-                const numberOfAllTodos = list.todos.length;
+    const { idList, userId } = useParams();
+    const [completedTodos, setCompletedTodos] = useState('');
+    const [totalTodos, setTotalTodos] = useState('');
+
+    useEffect(() => {
+        fetch(`http://localhost:3001/main/${userId}/${idList}/countCompletedTodos`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('access_token')}`,
             },
-        },
-    );
+        }).then((res) => {
+            res.json().then((data) => {
+                setCompletedTodos(data);
+            });
+        });
 
-    if (isLoading) return <p>Loading</p>;
-    if (isError) return <p>Error: {error as string}</p>;
+        fetch(`http://localhost:3001/main/${userId}/${idList}/countTodos`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+            },
+        }).then((res) => {
+            res.json().then((data) => {
+                setTotalTodos(data);
+            });
+        });
+    }, []);
+    console.log('completed: ', completedTodos.length);
+    console.log('total: ', totalTodos.length);
 
     const handleLogOut = () => {
         localStorage.removeItem('access_token');
         navigate('/');
         window.location.reload();
     };
+
     return (
         <>
             <div className={'aboutNavBar'}>
@@ -53,7 +59,15 @@ function NavBarProgres() {
                         </Link>
                     </h2>
                     <HStack gap={4} alignItems={'baseline'}>
-                        <ProgresBar completed={completed}></ProgresBar>
+                        <h4 className={'todoDone'}>
+                            <Text type={'meta'}>
+                                {completedTodos.length} OF {totalTodos.length} TODOS DONE
+                            </Text>
+                        </h4>
+                        <ProgresBar
+                            completed={completedTodos.length}
+                            total={totalTodos.length}
+                        ></ProgresBar>
                         <Link to={`/profile/${user.id}`} className={'navLink'}>
                             <Text type={'body'}>{user.username}</Text>
                         </Link>

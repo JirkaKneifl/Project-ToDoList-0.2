@@ -2,7 +2,7 @@ import Text from '../../basicComponents/Text/Text';
 import HStack from '../../basicComponents/HStack';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import VStack from '../../basicComponents/VStack';
 import ToDo from '../ToDo/ToDo';
 import { FiEdit, FiPlusCircle, FiTrash } from 'react-icons/fi';
@@ -29,7 +29,9 @@ function DescriptionBodyOfTodoLists() {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('access_token')}`,
                 },
-            }).then((res) => res.json()),
+            }).then((res) => {
+                return res.json();
+            }),
         {
             onSuccess: (list) => {
                 setTitle(list.title);

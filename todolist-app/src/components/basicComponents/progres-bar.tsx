@@ -9,10 +9,19 @@ type FillerStyles = {
 
 type ProgressBarProps = {
     completed: number;
+    total: number;
 };
 
 function ProgressBar(props: ProgressBarProps) {
-    const { completed } = props;
+    const { completed, total } = props;
+
+    const onePercentOfWidth = 150 / total;
+    let completedPercentage = completed * onePercentOfWidth;
+
+    if (completed === 0) {
+        completedPercentage = 0;
+    }
+    console.log('completedPercentage: ', completedPercentage);
 
     const containerStyles = {
         height: 10,
@@ -24,7 +33,7 @@ function ProgressBar(props: ProgressBarProps) {
     };
     const fillerStyles = {
         height: '100%',
-        width: `${completed}%`,
+        width: `${completedPercentage}px`,
         backgroundColor: 'var(--primary-color)',
         borderRadius: 'inherit',
         textAlign: 'right' as const,

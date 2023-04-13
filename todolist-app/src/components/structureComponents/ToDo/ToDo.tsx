@@ -3,7 +3,6 @@ import './ToDo.css';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FiTrash, FiEdit } from 'react-icons/fi';
 import Text from '../../basicComponents/Text/Text';
-import { useMutation } from 'react-query';
 import { useEffect, useRef, useState } from 'react';
 
 type toDoProps = {
@@ -46,6 +45,7 @@ function ToDo(props: toDoProps) {
         );
         const data = await res.json();
         setIsDone(data.is_done);
+        window.location.reload();
     };
 
     return (
