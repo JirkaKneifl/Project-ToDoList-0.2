@@ -24,7 +24,6 @@ function CreateTodoForm() {
             body: JSON.stringify({ title }),
         })
             .then(() => {
-                console.log('createListMutation');
                 navigate(`/main/${user.id}/${idList}`);
             })
             .catch(),
