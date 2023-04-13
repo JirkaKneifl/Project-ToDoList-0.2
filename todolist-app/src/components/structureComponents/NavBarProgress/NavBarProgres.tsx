@@ -52,7 +52,7 @@ function NavBarProgres() {
     return (
         <>
             <div className={'aboutNavBar'}>
-                <HStack alignItems={'baseline'} gap={235}>
+                <HStack alignItems={'baseline'} gap={200}>
                     <h2>
                         <Link to={`/main/${user.id}`} className={'toDoLogo'}>
                             ToDo App
@@ -74,7 +74,7 @@ function NavBarProgres() {
                         <Link className={'navLink'} to={`/main/${user.id}/settings`}>
                             <FiSettings className={'navLinkIcon'}></FiSettings>
                         </Link>
-                        <button className={'navLink'} onClick={handleLogOut}>
+                        <button className={'logOut'} onClick={handleLogOut}>
                             <FiLogOut className={'navLinkIcon'}></FiLogOut>
                         </button>
                     </HStack>

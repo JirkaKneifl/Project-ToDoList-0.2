@@ -17,7 +17,7 @@ function AboutNavBar() {
     return (
         <>
             <div className={'aboutNavBar'}>
-                <HStack alignItems={'baseline'} gap={300}>
+                <HStack alignItems={'baseline'} gap={305}>
                     <h2>
                         <Link to={`/main/${user.id}`} className={'toDoLogo'}>
                             ToDo App
@@ -30,7 +30,7 @@ function AboutNavBar() {
                         <Link className={'navLink'} to={`/main/${user.id}/settings`}>
                             <FiSettings className={'navLinkIcon'}></FiSettings>
                         </Link>
-                        <button className={'navLink'} onClick={handleLogOut}>
+                        <button className={'logOut'} onClick={handleLogOut}>
                             <FiLogOut className={'navLinkIcon'}></FiLogOut>
                         </button>
                     </HStack>

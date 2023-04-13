@@ -18,3 +18,13 @@
 .navLinkIcon{
     font-size: 24px;
 }
+.logOut{
+    color: white;
+    text-decoration: none;
+    padding: 4px;
+    border: none;
+    background: none;
+}
+.logOut:hover{
+    color: #555555;
+}
